@@ -25,6 +25,7 @@ jobs:
         uses: ardalanamini/auto-changelog@v4
         id: changelog
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-types: |
             breaking: Breaking Changes
             feat: New Features
