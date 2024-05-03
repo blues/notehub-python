@@ -18,12 +18,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      # https://github.com/marketplace/actions/auto-changelog
-      # require commit format are "type(category): description [flag]"
-      - name: Generate release changelog
-        uses: ardalanamini/auto-changelog@v4
-        id: changelog
         
       - name: Set up Python
         uses: actions/setup-python@v5
