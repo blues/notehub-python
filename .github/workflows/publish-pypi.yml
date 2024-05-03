@@ -22,10 +22,9 @@ jobs:
       # https://github.com/marketplace/actions/auto-changelog
       # require commit format are "type(category): description [flag]"
       - name: Generate release changelog
-        uses: ardalanamini/auto-changelog@v3
+        uses: ardalanamini/auto-changelog@v4
         id: changelog
         with:
-          github-token: ${{ github.token }}
           commit-types: |
             breaking: Breaking Changes
             feat: New Features
@@ -43,8 +42,8 @@ jobs:
             other: Other Changes
           default-commit-type: Other Changes
           mention-authors: true
-          include-compare: true
-          mention-new-contributors: true
+          include-pr-links: true
+          use-github-autolink: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
