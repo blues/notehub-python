@@ -22,7 +22,7 @@ jobs:
       uses: ardalanamini/auto-changelog@v4
       id: changelog
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ github.token }}
         commit-types: |
           breaking: Breaking Changes
           feat: New Features
