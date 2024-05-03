@@ -1,4 +1,4 @@
-# notehub_py
+# notehub-py
 The OpenAPI definition for the Notehub.io API.
 
 
