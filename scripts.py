@@ -66,37 +66,12 @@ def build_distro_package():
             "build"
         ])  
     except Exception as e:
-        print("Exception when building distro package: %s\n" % e)    
-
-
-# todo delete this 
-def publish_package():
-    try:
-        os.chdir("src/")
-        subprocess.run([
-            "python3",
-            "-m",
-            "pip",
-            "install",
-            "--upgrade",
-            "twine"
-        ])
-        subprocess.run([
-            "python3",
-            "-m",
-            "twine",
-            "upload",
-            "--repository",
-            "testpypi",
-            "dist/*"
-        ])
-    except Exception as e:
-        print("Exception when publishing package: %s\n" % e)        
+        print("Exception when building distro package: %s\n" % e)       
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 scripts.py [download_python_template | generate_package | build_distro_package | publish_package]")
+        print("Usage: python3 scripts.py [download_python_template | generate_package | build_distro_package]")
         sys.exit(1)
     
     script_to_run = sys.argv[1]
@@ -106,8 +81,6 @@ if __name__ == "__main__":
         generate_package()
     elif script_to_run == "build_distro_package":
         build_distro_package()
-    elif script_to_run == "publish_package":
-        publish_package()
     else:
-        print("Invalid script name. Use one of: download_python_template, generate_package, build_distro_package, publish_package")
+        print("Invalid script name. Use one of: download_python_template, generate_package, build_distro_package")
         sys.exit(1) 
