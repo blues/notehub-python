@@ -277,25 +277,7 @@ python3 scripts.py build_distro_package
 
 4. Commit and push the changes to a new branch in GitHub and open a new pull request when the branch is ready for review. See the [contribution documentation](CONTRIBUTING.md) for further details around a good PR and commit messages.
 5. Get the PR approved and merged to `main`.
-
-<!-- todo adjust this after GH Actions are added as a workflow  -->
-
-6. Publish the library to PyPi
-
-```bash
-python3 scripts.py publish_package
-```
-
-> **NOTE:** Publishing to PyPi requires an API token with access to the repository. You will need this before you can publish.
->
-> To use an API token:
->
-> Set your username to __token__
-> Set your password to the token value, including the pypi- prefix
-
-7. Create a new release with a tag following the [semantic versioning](https://semver.org/) style of [vX.X.X] and publish the release. For example: a new release with a tag named v1.0.2.
-8. After the GitHub Actions workflow `publish-npm.yml` has successfully deployed the latest version of notehub-py to PyPi, copy the changelog notes from the GitHub Action step `Generate release changelog`.
-9. Paste those notes into the appropriate release tag in the repo.
+6. Create a new release with a tag following the [semantic versioning](https://semver.org/) style of [vX.X.X], click the "Generate release notes" button, and publish the release. For example: a new release with a tag named v1.0.2.
 
 ## Contributing
 
