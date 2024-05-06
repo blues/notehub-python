@@ -5,7 +5,7 @@ info:
   title: Notehub API
   version: 1.0.0
   description: |
-    The OpenAPI definition for the Notehub.io API.
+    The OpenAPI definition for the Notehub.io API. Test test
   contact:
     name: Blues Engineering
     email: engineering@blues.io
@@ -4138,3 +4138,4 @@ components:
         published:
           type: boolean
           description: True if the firmware is published.
+
