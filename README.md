@@ -92,8 +92,8 @@ configuration.api_key['api_key'] = token
 # Enter a context with an instance of the API client
 with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    device_api_instance = notehub_py.DevicesApi(api_client)
-    env_api_instance = notehub_py.EnvironmentVariablesApi(api_client)
+    device_api_instance = notehub_py.DeviceApi(api_client)
+    env_api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'notehub-project-uid-goes-here' # str | 
     device_uid = 'dev:xxxxxxxxxxxxxxxx' # str |
     page_size = 50 # int |  (optional) (default to 50)
@@ -168,7 +168,7 @@ Files and folders to be aware of in the root of the project.
 The `src/` folder inside the root of the project contains the contents of the auto-generated `notehub_py` package that is eventually published to PyPi, including:
 
 - The [`docs/`](src/docs/) folder documenting how to access the API endpoints via the library,
-- The internal [`notehub_python/`](src/notehub_python/) folder that holds the Python-based `api` and `model` files for each endpoint,
+- The internal [`notehub_py/`](src/notehub_py/) folder that holds the Python-based `api` and `model` files for each endpoint,
 - The [`test/`](src/test/) folder for unit tests,
 - And the `dist/` folder that contains the packaged up `.tar` file (source distribution) and `.whl` file (built distribution) that are uploaded to PyPi.
 
@@ -235,9 +235,9 @@ This command will kick off the OpenAPI Generator tool to generate a new copy of 
 If you'd like to test some changes you've made to the notehub-py API locally before submitting a new PR to the repo, follow steps 1 - 4 above and then use the following commands to migrate to the correct folder and install the dependencies locally:
 
 ```bash
-cd src/ # <---- path to folder where you want to test the local notehub_python SDK package
+cd src/ # <---- path to folder where you want to test the local notehub_py SDK package
 python3 -m venv .venv
-source ./.venv/Scripts/activate # <---- path to the script to Activate the Python virtual environment may vary
+source ./.venv/bin/activate # <---- path to the script to Activate the Python virtual environment may vary
 pip3 install -r requirements.txt
 ```
 
