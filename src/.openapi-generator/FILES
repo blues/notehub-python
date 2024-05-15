@@ -3,6 +3,10 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
+docs/Alert.md
+docs/AlertApi.md
+docs/AlertDataInner.md
+docs/AlertNotificationsInner.md
 docs/AuthorizationApi.md
 docs/Aws.md
 docs/Azure.md
@@ -31,6 +35,7 @@ docs/EventApi.md
 docs/FirmwareApi.md
 docs/FirmwareInfo.md
 docs/Fleet.md
+docs/GetAlerts200Response.md
 docs/GetBillingAccounts200Response.md
 docs/GetDeviceEnvironmentVariables200Response.md
 docs/GetDeviceHealthLog200Response.md
@@ -90,6 +95,7 @@ docs/UserDbRoute.md
 git_push.sh
 notehub_py/__init__.py
 notehub_py/api/__init__.py
+notehub_py/api/alert_api.py
 notehub_py/api/authorization_api.py
 notehub_py/api/billing_account_api.py
 notehub_py/api/device_api.py
@@ -103,6 +109,9 @@ notehub_py/api_response.py
 notehub_py/configuration.py
 notehub_py/exceptions.py
 notehub_py/models/__init__.py
+notehub_py/models/alert.py
+notehub_py/models/alert_data_inner.py
+notehub_py/models/alert_notifications_inner.py
 notehub_py/models/aws.py
 notehub_py/models/azure.py
 notehub_py/models/billing_account.py
@@ -126,6 +135,7 @@ notehub_py/models/error.py
 notehub_py/models/event.py
 notehub_py/models/firmware_info.py
 notehub_py/models/fleet.py
+notehub_py/models/get_alerts200_response.py
 notehub_py/models/get_billing_accounts200_response.py
 notehub_py/models/get_device_environment_variables200_response.py
 notehub_py/models/get_device_health_log200_response.py

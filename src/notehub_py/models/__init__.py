@@ -15,6 +15,9 @@
 
 
 # import models into model package
+from notehub_py.models.alert import Alert
+from notehub_py.models.alert_data_inner import AlertDataInner
+from notehub_py.models.alert_notifications_inner import AlertNotificationsInner
 from notehub_py.models.aws import Aws
 from notehub_py.models.azure import Azure
 from notehub_py.models.billing_account import BillingAccount
@@ -38,6 +41,7 @@ from notehub_py.models.error import Error
 from notehub_py.models.event import Event
 from notehub_py.models.firmware_info import FirmwareInfo
 from notehub_py.models.fleet import Fleet
+from notehub_py.models.get_alerts200_response import GetAlerts200Response
 from notehub_py.models.get_billing_accounts200_response import GetBillingAccounts200Response
 from notehub_py.models.get_device_environment_variables200_response import GetDeviceEnvironmentVariables200Response
 from notehub_py.models.get_device_health_log200_response import GetDeviceHealthLog200Response
