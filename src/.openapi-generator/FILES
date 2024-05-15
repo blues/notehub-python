@@ -197,9 +197,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_alert.py
-test/test_alert_api.py
-test/test_alert_data_inner.py
-test/test_alert_notifications_inner.py
-test/test_get_alerts200_response.py
 tox.ini
