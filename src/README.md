@@ -93,6 +93,7 @@ All URIs are relative to *https://api.notefile.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AlertApi* | [**get_alerts**](docs/AlertApi.md#get_alerts) | **GET** /v1/projects/{projectUID}/alerts | 
 *AuthorizationApi* | [**login**](docs/AuthorizationApi.md#login) | **POST** /auth/login | 
 *BillingAccountApi* | [**get_billing_accounts**](docs/BillingAccountApi.md#get_billing_accounts) | **GET** /v1/billing-accounts | 
 *DeviceApi* | [**delete_device_environment_variable**](docs/DeviceApi.md#delete_device_environment_variable) | **DELETE** /v1/projects/{projectUID}/devices/{deviceUID}/environment_variables/{key} | 
@@ -170,6 +171,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Alert](docs/Alert.md)
+ - [AlertDataInner](docs/AlertDataInner.md)
+ - [AlertNotificationsInner](docs/AlertNotificationsInner.md)
  - [Aws](docs/Aws.md)
  - [Azure](docs/Azure.md)
  - [BillingAccount](docs/BillingAccount.md)
@@ -193,6 +197,7 @@ Class | Method | HTTP request | Description
  - [Event](docs/Event.md)
  - [FirmwareInfo](docs/FirmwareInfo.md)
  - [Fleet](docs/Fleet.md)
+ - [GetAlerts200Response](docs/GetAlerts200Response.md)
  - [GetBillingAccounts200Response](docs/GetBillingAccounts200Response.md)
  - [GetDeviceEnvironmentVariables200Response](docs/GetDeviceEnvironmentVariables200Response.md)
  - [GetDeviceHealthLog200Response](docs/GetDeviceHealthLog200Response.md)
