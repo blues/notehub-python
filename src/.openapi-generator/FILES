@@ -209,12 +209,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_email_notification.py
-test/test_firmware_status.py
-test/test_ota_status.py
-test/test_ota_status_list.py
-test/test_ota_update_request.py
-test/test_ota_update_status.py
-test/test_slack_bearer_notification.py
-test/test_slack_web_hook_notification.py
 tox.ini
