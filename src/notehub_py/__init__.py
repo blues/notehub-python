@@ -23,7 +23,6 @@ from notehub_py.api.authorization_api import AuthorizationApi
 from notehub_py.api.billing_account_api import BillingAccountApi
 from notehub_py.api.device_api import DeviceApi
 from notehub_py.api.event_api import EventApi
-from notehub_py.api.firmware_api import FirmwareApi
 from notehub_py.api.monitor_api import MonitorApi
 from notehub_py.api.project_api import ProjectApi
 from notehub_py.api.route_api import RouteApi
@@ -61,10 +60,12 @@ from notehub_py.models.device import Device
 from notehub_py.models.device_session import DeviceSession
 from notehub_py.models.device_tower_info import DeviceTowerInfo
 from notehub_py.models.device_usage import DeviceUsage
+from notehub_py.models.email_notification import EmailNotification
 from notehub_py.models.environment_variables import EnvironmentVariables
 from notehub_py.models.error import Error
 from notehub_py.models.event import Event
 from notehub_py.models.firmware_info import FirmwareInfo
+from notehub_py.models.firmware_status import FirmwareStatus
 from notehub_py.models.fleet import Fleet
 from notehub_py.models.get_alerts200_response import GetAlerts200Response
 from notehub_py.models.get_billing_accounts200_response import GetBillingAccounts200Response
@@ -99,9 +100,12 @@ from notehub_py.models.login200_response import Login200Response
 from notehub_py.models.login_request import LoginRequest
 from notehub_py.models.monitor import Monitor
 from notehub_py.models.monitor_alert_routes_inner import MonitorAlertRoutesInner
-from notehub_py.models.monitor_thresholds import MonitorThresholds
 from notehub_py.models.mqtt import Mqtt
 from notehub_py.models.note import Note
+from notehub_py.models.ota_status import OTAStatus
+from notehub_py.models.ota_status_list import OTAStatusList
+from notehub_py.models.ota_update_request import OTAUpdateRequest
+from notehub_py.models.ota_update_status import OTAUpdateStatus
 from notehub_py.models.post_provision_project_device_request import PostProvisionProjectDeviceRequest
 from notehub_py.models.product import Product
 from notehub_py.models.project import Project
@@ -113,6 +117,8 @@ from notehub_py.models.role import Role
 from notehub_py.models.route import Route
 from notehub_py.models.route_schema import RouteSchema
 from notehub_py.models.slack import Slack
+from notehub_py.models.slack_bearer_notification import SlackBearerNotification
+from notehub_py.models.slack_web_hook_notification import SlackWebHookNotification
 from notehub_py.models.snowflake import Snowflake
 from notehub_py.models.snowflake_transform import SnowflakeTransform
 from notehub_py.models.thingworx import Thingworx

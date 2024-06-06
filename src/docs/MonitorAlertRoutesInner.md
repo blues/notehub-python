@@ -5,7 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email_addresses** | **List[str]** | List of email addresses in the project that will receive alerts. | [optional] 
+**url** | **str** | The URL of the Slack webhook. | [optional] 
+**message_type** | **str** | text or blocks | [optional] 
+**text** | **str** | The text of the message, or the blocks definition | [optional] 
+**token** | **str** | The bearer token for the Slack app. | [optional] 
+**channel** | **str** | The channel to send the message to. | [optional] 
+**email** | **str** | Email Address | [optional] 
 
 ## Example
 

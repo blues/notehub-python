@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, Dict, Optional
+from pydantic import Field, StrictBool, StrictStr
+from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from notehub_py.models.clone_project_request import CloneProjectRequest
 from notehub_py.models.create_fleet_request import CreateFleetRequest
@@ -26,11 +26,15 @@ from notehub_py.models.create_product_request import CreateProductRequest
 from notehub_py.models.create_project_request import CreateProjectRequest
 from notehub_py.models.delete_device_fleets_request import DeleteDeviceFleetsRequest
 from notehub_py.models.environment_variables import EnvironmentVariables
+from notehub_py.models.firmware_info import FirmwareInfo
 from notehub_py.models.fleet import Fleet
 from notehub_py.models.get_project_fleets200_response import GetProjectFleets200Response
 from notehub_py.models.get_project_members200_response import GetProjectMembers200Response
 from notehub_py.models.get_project_products200_response import GetProjectProducts200Response
 from notehub_py.models.get_projects200_response import GetProjects200Response
+from notehub_py.models.ota_status_list import OTAStatusList
+from notehub_py.models.ota_update_request import OTAUpdateRequest
+from notehub_py.models.ota_update_status import OTAUpdateStatus
 from notehub_py.models.product import Product
 from notehub_py.models.project import Project
 from notehub_py.models.put_device_fleets_request import PutDeviceFleetsRequest
@@ -3366,6 +3370,383 @@ class ProjectApi:
 
 
     @validate_call
+    def get_firmware_info(
+        self,
+        project_uid: StrictStr,
+        product: Optional[StrictStr] = None,
+        firmware_type: Optional[StrictStr] = None,
+        version: Optional[StrictStr] = None,
+        target: Optional[StrictStr] = None,
+        filename: Optional[StrictStr] = None,
+        md5: Optional[StrictStr] = None,
+        unpublished: Optional[StrictBool] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[FirmwareInfo]:
+        """get_firmware_info
+
+        Get Available Firmware Information
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param product:
+        :type product: str
+        :param firmware_type:
+        :type firmware_type: str
+        :param version:
+        :type version: str
+        :param target:
+        :type target: str
+        :param filename:
+        :type filename: str
+        :param md5:
+        :type md5: str
+        :param unpublished:
+        :type unpublished: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_firmware_info_serialize(
+            project_uid=project_uid,
+            product=product,
+            firmware_type=firmware_type,
+            version=version,
+            target=target,
+            filename=filename,
+            md5=md5,
+            unpublished=unpublished,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[FirmwareInfo]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_firmware_info_with_http_info(
+        self,
+        project_uid: StrictStr,
+        product: Optional[StrictStr] = None,
+        firmware_type: Optional[StrictStr] = None,
+        version: Optional[StrictStr] = None,
+        target: Optional[StrictStr] = None,
+        filename: Optional[StrictStr] = None,
+        md5: Optional[StrictStr] = None,
+        unpublished: Optional[StrictBool] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[FirmwareInfo]]:
+        """get_firmware_info
+
+        Get Available Firmware Information
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param product:
+        :type product: str
+        :param firmware_type:
+        :type firmware_type: str
+        :param version:
+        :type version: str
+        :param target:
+        :type target: str
+        :param filename:
+        :type filename: str
+        :param md5:
+        :type md5: str
+        :param unpublished:
+        :type unpublished: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_firmware_info_serialize(
+            project_uid=project_uid,
+            product=product,
+            firmware_type=firmware_type,
+            version=version,
+            target=target,
+            filename=filename,
+            md5=md5,
+            unpublished=unpublished,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[FirmwareInfo]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_firmware_info_without_preload_content(
+        self,
+        project_uid: StrictStr,
+        product: Optional[StrictStr] = None,
+        firmware_type: Optional[StrictStr] = None,
+        version: Optional[StrictStr] = None,
+        target: Optional[StrictStr] = None,
+        filename: Optional[StrictStr] = None,
+        md5: Optional[StrictStr] = None,
+        unpublished: Optional[StrictBool] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_firmware_info
+
+        Get Available Firmware Information
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param product:
+        :type product: str
+        :param firmware_type:
+        :type firmware_type: str
+        :param version:
+        :type version: str
+        :param target:
+        :type target: str
+        :param filename:
+        :type filename: str
+        :param md5:
+        :type md5: str
+        :param unpublished:
+        :type unpublished: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_firmware_info_serialize(
+            project_uid=project_uid,
+            product=product,
+            firmware_type=firmware_type,
+            version=version,
+            target=target,
+            filename=filename,
+            md5=md5,
+            unpublished=unpublished,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[FirmwareInfo]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_firmware_info_serialize(
+        self,
+        project_uid,
+        product,
+        firmware_type,
+        version,
+        target,
+        filename,
+        md5,
+        unpublished,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if project_uid is not None:
+            _path_params['projectUID'] = project_uid
+        # process the query parameters
+        if product is not None:
+            
+            _query_params.append(('product', product))
+            
+        if firmware_type is not None:
+            
+            _query_params.append(('firmwareType', firmware_type))
+            
+        if version is not None:
+            
+            _query_params.append(('version', version))
+            
+        if target is not None:
+            
+            _query_params.append(('target', target))
+            
+        if filename is not None:
+            
+            _query_params.append(('filename', filename))
+            
+        if md5 is not None:
+            
+            _query_params.append(('md5', md5))
+            
+        if unpublished is not None:
+            
+            _query_params.append(('unpublished', unpublished))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'api_key'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/projects/{projectUID}/firmware',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_fleet_environment_variables(
         self,
         project_uid: StrictStr,
@@ -4913,6 +5294,352 @@ class ProjectApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/projects/{projectUID}/members',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_project_ota_status(
+        self,
+        project_uid: StrictStr,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="An array of Device UIDs.")] = None,
+        fleet_uids: Optional[List[StrictStr]] = None,
+        device_tags: Optional[List[StrictStr]] = None,
+        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[OTAStatusList]:
+        """get_project_ota_status
+
+        Get Project OTA Status
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param device_uids: An array of Device UIDs.
+        :type device_uids: List[str]
+        :param fleet_uids:
+        :type fleet_uids: List[str]
+        :param device_tags:
+        :type device_tags: List[str]
+        :param page_size:
+        :type page_size: int
+        :param page_num:
+        :type page_num: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_project_ota_status_serialize(
+            project_uid=project_uid,
+            device_uids=device_uids,
+            fleet_uids=fleet_uids,
+            device_tags=device_tags,
+            page_size=page_size,
+            page_num=page_num,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OTAStatusList]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_project_ota_status_with_http_info(
+        self,
+        project_uid: StrictStr,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="An array of Device UIDs.")] = None,
+        fleet_uids: Optional[List[StrictStr]] = None,
+        device_tags: Optional[List[StrictStr]] = None,
+        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[OTAStatusList]]:
+        """get_project_ota_status
+
+        Get Project OTA Status
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param device_uids: An array of Device UIDs.
+        :type device_uids: List[str]
+        :param fleet_uids:
+        :type fleet_uids: List[str]
+        :param device_tags:
+        :type device_tags: List[str]
+        :param page_size:
+        :type page_size: int
+        :param page_num:
+        :type page_num: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_project_ota_status_serialize(
+            project_uid=project_uid,
+            device_uids=device_uids,
+            fleet_uids=fleet_uids,
+            device_tags=device_tags,
+            page_size=page_size,
+            page_num=page_num,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OTAStatusList]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_project_ota_status_without_preload_content(
+        self,
+        project_uid: StrictStr,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="An array of Device UIDs.")] = None,
+        fleet_uids: Optional[List[StrictStr]] = None,
+        device_tags: Optional[List[StrictStr]] = None,
+        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_project_ota_status
+
+        Get Project OTA Status
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param device_uids: An array of Device UIDs.
+        :type device_uids: List[str]
+        :param fleet_uids:
+        :type fleet_uids: List[str]
+        :param device_tags:
+        :type device_tags: List[str]
+        :param page_size:
+        :type page_size: int
+        :param page_num:
+        :type page_num: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_project_ota_status_serialize(
+            project_uid=project_uid,
+            device_uids=device_uids,
+            fleet_uids=fleet_uids,
+            device_tags=device_tags,
+            page_size=page_size,
+            page_num=page_num,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OTAStatusList]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_project_ota_status_serialize(
+        self,
+        project_uid,
+        device_uids,
+        fleet_uids,
+        device_tags,
+        page_size,
+        page_num,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'deviceUIDs': 'multi',
+            'fleetUIDs': 'multi',
+            'deviceTags': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if project_uid is not None:
+            _path_params['projectUID'] = project_uid
+        # process the query parameters
+        if device_uids is not None:
+            
+            _query_params.append(('deviceUIDs', device_uids))
+            
+        if fleet_uids is not None:
+            
+            _query_params.append(('fleetUIDs', fleet_uids))
+            
+        if device_tags is not None:
+            
+            _query_params.append(('deviceTags', device_tags))
+            
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if page_num is not None:
+            
+            _query_params.append(('pageNum', page_num))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'api_key'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/projects/{projectUID}/ota/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6889,6 +7616,292 @@ class ProjectApi:
         return self.api_client.param_serialize(
             method='PUT',
             resource_path='/v1/projects/{projectUID}/fleets/{fleetUID}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_project_firmware(
+        self,
+        project_uid: StrictStr,
+        ota_update_request: Annotated[OTAUpdateRequest, Field(description="Body or payload of firmware update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[OTAUpdateStatus]:
+        """update_project_firmware
+
+        Update Project Firmware
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param ota_update_request: Body or payload of firmware update (required)
+        :type ota_update_request: OTAUpdateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_project_firmware_serialize(
+            project_uid=project_uid,
+            ota_update_request=ota_update_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OTAUpdateStatus]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_project_firmware_with_http_info(
+        self,
+        project_uid: StrictStr,
+        ota_update_request: Annotated[OTAUpdateRequest, Field(description="Body or payload of firmware update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[OTAUpdateStatus]]:
+        """update_project_firmware
+
+        Update Project Firmware
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param ota_update_request: Body or payload of firmware update (required)
+        :type ota_update_request: OTAUpdateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_project_firmware_serialize(
+            project_uid=project_uid,
+            ota_update_request=ota_update_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OTAUpdateStatus]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_project_firmware_without_preload_content(
+        self,
+        project_uid: StrictStr,
+        ota_update_request: Annotated[OTAUpdateRequest, Field(description="Body or payload of firmware update")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """update_project_firmware
+
+        Update Project Firmware
+
+        :param project_uid: (required)
+        :type project_uid: str
+        :param ota_update_request: Body or payload of firmware update (required)
+        :type ota_update_request: OTAUpdateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_project_firmware_serialize(
+            project_uid=project_uid,
+            ota_update_request=ota_update_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OTAUpdateStatus]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_project_firmware_serialize(
+        self,
+        project_uid,
+        ota_update_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if project_uid is not None:
+            _path_params['projectUID'] = project_uid
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ota_update_request is not None:
+            _body_params = ota_update_request
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'api_key'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/projects/{projectUID}/ota/update',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
