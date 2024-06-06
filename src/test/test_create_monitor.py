@@ -50,17 +50,16 @@ class TestCreateMonitor(unittest.TestCase):
                     ],
                 source_selector = 'body.temperature',
                 condition_type = 'greater_than',
-                thresholds = notehub_py.models.monitor_thresholds.Monitor_thresholds(
-                    alarm = 1.337, ),
+                threshold = 56,
                 alert_routes = [
-                    notehub_py.models.monitor_alert_routes_inner.Monitor_alert_routes_inner(
-                        email_addresses = [
-                            ''
-                            ], )
+                    null
                     ],
                 last_routed_at = '',
                 silenced = True,
-                routing_cooldown_period = '10m or 5h30m40s'
+                routing_cooldown_period = '10m or 5h30m40s',
+                aggregate_function = 'none',
+                aggregate_window = '10m or 5h30m40s',
+                per_device = True
             )
         else:
             return CreateMonitor(
@@ -70,10 +69,7 @@ class TestCreateMonitor(unittest.TestCase):
                     ''
                     ],
                 alert_routes = [
-                    notehub_py.models.monitor_alert_routes_inner.Monitor_alert_routes_inner(
-                        email_addresses = [
-                            ''
-                            ], )
+                    null
                     ],
         )
         """
