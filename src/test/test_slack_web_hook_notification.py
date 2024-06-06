@@ -15,10 +15,10 @@
 
 import unittest
 
-from notehub_py.models.monitor_thresholds import MonitorThresholds
+from notehub_py.models.slack_web_hook_notification import SlackWebHookNotification
 
-class TestMonitorThresholds(unittest.TestCase):
-    """MonitorThresholds unit test stubs"""
+class TestSlackWebHookNotification(unittest.TestCase):
+    """SlackWebHookNotification unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,27 @@ class TestMonitorThresholds(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MonitorThresholds:
-        """Test MonitorThresholds
+    def make_instance(self, include_optional) -> SlackWebHookNotification:
+        """Test SlackWebHookNotification
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MonitorThresholds`
+        # uncomment below to create an instance of `SlackWebHookNotification`
         """
-        model = MonitorThresholds()
+        model = SlackWebHookNotification()
         if include_optional:
-            return MonitorThresholds(
-                alarm = 1.337
+            return SlackWebHookNotification(
+                url = '',
+                message_type = 'text',
+                text = ''
             )
         else:
-            return MonitorThresholds(
+            return SlackWebHookNotification(
         )
         """
 
-    def testMonitorThresholds(self):
-        """Test MonitorThresholds"""
+    def testSlackWebHookNotification(self):
+        """Test SlackWebHookNotification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

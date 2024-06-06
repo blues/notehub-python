@@ -15,10 +15,10 @@
 
 import unittest
 
-from notehub_py.models.monitor_alert_routes_inner import MonitorAlertRoutesInner
+from notehub_py.models.ota_update_status import OTAUpdateStatus
 
-class TestMonitorAlertRoutesInner(unittest.TestCase):
-    """MonitorAlertRoutesInner unit test stubs"""
+class TestOTAUpdateStatus(unittest.TestCase):
+    """OTAUpdateStatus unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,30 +26,31 @@ class TestMonitorAlertRoutesInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MonitorAlertRoutesInner:
-        """Test MonitorAlertRoutesInner
+    def make_instance(self, include_optional) -> OTAUpdateStatus:
+        """Test OTAUpdateStatus
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MonitorAlertRoutesInner`
+        # uncomment below to create an instance of `OTAUpdateStatus`
         """
-        model = MonitorAlertRoutesInner()
+        model = OTAUpdateStatus()
         if include_optional:
-            return MonitorAlertRoutesInner(
-                url = '',
-                message_type = 'text',
-                text = '',
-                token = '',
-                channel = '',
-                email = 'example@blues.com'
+            return OTAUpdateStatus(
+                status = '',
+                successful = [
+                    ''
+                    ],
+                failed = [
+                    ''
+                    ]
             )
         else:
-            return MonitorAlertRoutesInner(
+            return OTAUpdateStatus(
         )
         """
 
-    def testMonitorAlertRoutesInner(self):
-        """Test MonitorAlertRoutesInner"""
+    def testOTAUpdateStatus(self):
+        """Test OTAUpdateStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

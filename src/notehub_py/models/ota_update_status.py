@@ -18,17 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MonitorThresholds(BaseModel):
+class OTAUpdateStatus(BaseModel):
     """
-    MonitorThresholds
+    OTAUpdateStatus
     """ # noqa: E501
-    alarm: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The value that triggers the monitor at an alarm level")
-    __properties: ClassVar[List[str]] = ["alarm"]
+    status: Optional[StrictStr] = Field(default=None, description="The status of the OTA request")
+    successful: Optional[List[StrictStr]] = Field(default=None, description="The successful device UIDs")
+    failed: Optional[List[StrictStr]] = Field(default=None, description="The failed device UIDs")
+    __properties: ClassVar[List[str]] = ["status", "successful", "failed"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +50,7 @@ class MonitorThresholds(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MonitorThresholds from a JSON string"""
+        """Create an instance of OTAUpdateStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +75,7 @@ class MonitorThresholds(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MonitorThresholds from a dict"""
+        """Create an instance of OTAUpdateStatus from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +83,9 @@ class MonitorThresholds(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "alarm": obj.get("alarm")
+            "status": obj.get("status"),
+            "successful": obj.get("successful"),
+            "failed": obj.get("failed")
         })
         return _obj
 

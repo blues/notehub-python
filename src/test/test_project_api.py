@@ -99,6 +99,12 @@ class TestProjectApi(unittest.TestCase):
         """
         pass
 
+    def test_get_firmware_info(self) -> None:
+        """Test case for get_firmware_info
+
+        """
+        pass
+
     def test_get_fleet_environment_variables(self) -> None:
         """Test case for get_fleet_environment_variables
 
@@ -131,6 +137,12 @@ class TestProjectApi(unittest.TestCase):
 
     def test_get_project_members(self) -> None:
         """Test case for get_project_members
+
+        """
+        pass
+
+    def test_get_project_ota_status(self) -> None:
+        """Test case for get_project_ota_status
 
         """
         pass
@@ -173,6 +185,12 @@ class TestProjectApi(unittest.TestCase):
 
     def test_update_fleet(self) -> None:
         """Test case for update_fleet
+
+        """
+        pass
+
+    def test_update_project_firmware(self) -> None:
+        """Test case for update_project_firmware
 
         """
         pass

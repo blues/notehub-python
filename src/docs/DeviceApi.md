@@ -74,7 +74,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     key = 'key_example' # str | The environment variable key to delete.
 
     try:
@@ -156,7 +156,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     purge = 'false' # str |  (default to 'false')
 
     try:
@@ -236,7 +236,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_instance.disable_device(project_uid, device_uid)
@@ -314,7 +314,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_instance.disable_device_connectivity_assurance(project_uid, device_uid)
@@ -392,7 +392,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_instance.enable_device(project_uid, device_uid)
@@ -470,7 +470,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_instance.enable_device_connectivity_assurance(project_uid, device_uid)
@@ -549,7 +549,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.get_device(project_uid, device_uid)
@@ -630,7 +630,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.get_device_environment_variables(project_uid, device_uid)
@@ -711,7 +711,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     product_uid = 'com.blues.bridge:sensors' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.get_device_environment_variables_by_pin(product_uid, device_uid)
@@ -792,7 +792,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.get_device_health_log(project_uid, device_uid)
@@ -873,7 +873,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.get_device_latest(project_uid, device_uid)
@@ -954,7 +954,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.get_device_public_key(project_uid, device_uid)
@@ -1035,7 +1035,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
 
@@ -1371,7 +1371,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     notefile_id = 'notefile_id_example' # str | 
     note = notehub_py.Note() # Note | Body or payload of note to be added to the device
 
@@ -1454,7 +1454,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     notefile_id = 'notefile_id_example' # str | 
     tracker = 'tracker_example' # str | The change tracker ID. (optional)
     max = 56 # int | The maximum number of Notes to return in the request. (optional)
@@ -1549,7 +1549,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     notefile_id = 'notefile_id_example' # str | 
     note_id = 'note_id_example' # str | 
     note = notehub_py.Note() # Note | Body or payload of note to be added to the device
@@ -1633,7 +1633,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     notefile_id = 'notefile_id_example' # str | 
     note_id = 'note_id_example' # str | 
 
@@ -1716,7 +1716,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     notefile_id = 'notefile_id_example' # str | 
     note_id = 'note_id_example' # str | 
     delete = True # bool | Whether to delete the note from the DB notefile (optional)
@@ -1806,7 +1806,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     body = notehub_py.Body() # Body | Body or payload of singnal to be sent to the device
 
     try:
@@ -1889,7 +1889,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     notefile_id = 'notefile_id_example' # str | 
     note_id = 'note_id_example' # str | 
     note = notehub_py.Note() # Note | Body or payload of note to be added to the device
@@ -1974,7 +1974,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     tracker = 'tracker_example' # str | The change tracker ID. (optional)
     files = ['files_example'] # List[str] | One or more files to obtain change information from. (optional)
 
@@ -2059,7 +2059,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
 
     try:
         api_response = api_instance.handle_notefile_changes_pending(project_uid, device_uid)
@@ -2140,7 +2140,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     handle_notefile_delete_request = notehub_py.HandleNotefileDeleteRequest() # HandleNotefileDeleteRequest | 
 
     try:
@@ -2221,7 +2221,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     post_provision_project_device_request = notehub_py.PostProvisionProjectDeviceRequest() # PostProvisionProjectDeviceRequest | Provision a device to a specific ProductUID
 
     try:
@@ -2304,7 +2304,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     environment_variables = notehub_py.EnvironmentVariables() # EnvironmentVariables | Environment variables to be added to the device
 
     try:
@@ -2387,7 +2387,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.DeviceApi(api_client)
     product_uid = 'com.blues.bridge:sensors' # str | 
-    device_uid = 'device_uid_example' # str | 
+    device_uid = 'dev:000000000000000' # str | 
     environment_variables = notehub_py.EnvironmentVariables() # EnvironmentVariables | Environment variables to be added to the device
 
     try:

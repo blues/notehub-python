@@ -15,10 +15,10 @@
 
 import unittest
 
-from notehub_py.models.monitor_alert_routes_inner import MonitorAlertRoutesInner
+from notehub_py.models.email_notification import EmailNotification
 
-class TestMonitorAlertRoutesInner(unittest.TestCase):
-    """MonitorAlertRoutesInner unit test stubs"""
+class TestEmailNotification(unittest.TestCase):
+    """EmailNotification unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,30 +26,25 @@ class TestMonitorAlertRoutesInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MonitorAlertRoutesInner:
-        """Test MonitorAlertRoutesInner
+    def make_instance(self, include_optional) -> EmailNotification:
+        """Test EmailNotification
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MonitorAlertRoutesInner`
+        # uncomment below to create an instance of `EmailNotification`
         """
-        model = MonitorAlertRoutesInner()
+        model = EmailNotification()
         if include_optional:
-            return MonitorAlertRoutesInner(
-                url = '',
-                message_type = 'text',
-                text = '',
-                token = '',
-                channel = '',
+            return EmailNotification(
                 email = 'example@blues.com'
             )
         else:
-            return MonitorAlertRoutesInner(
+            return EmailNotification(
         )
         """
 
-    def testMonitorAlertRoutesInner(self):
-        """Test MonitorAlertRoutesInner"""
+    def testEmailNotification(self):
+        """Test EmailNotification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

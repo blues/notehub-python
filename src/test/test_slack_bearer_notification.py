@@ -15,10 +15,10 @@
 
 import unittest
 
-from notehub_py.models.monitor_alert_routes_inner import MonitorAlertRoutesInner
+from notehub_py.models.slack_bearer_notification import SlackBearerNotification
 
-class TestMonitorAlertRoutesInner(unittest.TestCase):
-    """MonitorAlertRoutesInner unit test stubs"""
+class TestSlackBearerNotification(unittest.TestCase):
+    """SlackBearerNotification unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,30 +26,28 @@ class TestMonitorAlertRoutesInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MonitorAlertRoutesInner:
-        """Test MonitorAlertRoutesInner
+    def make_instance(self, include_optional) -> SlackBearerNotification:
+        """Test SlackBearerNotification
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MonitorAlertRoutesInner`
+        # uncomment below to create an instance of `SlackBearerNotification`
         """
-        model = MonitorAlertRoutesInner()
+        model = SlackBearerNotification()
         if include_optional:
-            return MonitorAlertRoutesInner(
-                url = '',
-                message_type = 'text',
-                text = '',
+            return SlackBearerNotification(
                 token = '',
                 channel = '',
-                email = 'example@blues.com'
+                message_type = 'text',
+                text = ''
             )
         else:
-            return MonitorAlertRoutesInner(
+            return SlackBearerNotification(
         )
         """
 
-    def testMonitorAlertRoutesInner(self):
-        """Test MonitorAlertRoutesInner"""
+    def testSlackBearerNotification(self):
+        """Test SlackBearerNotification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

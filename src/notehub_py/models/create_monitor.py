@@ -18,10 +18,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from notehub_py.models.monitor_alert_routes_inner import MonitorAlertRoutesInner
-from notehub_py.models.monitor_thresholds import MonitorThresholds
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,13 +38,16 @@ class CreateMonitor(BaseModel):
     notefile_filter: List[StrictStr]
     fleet_filter: Optional[List[StrictStr]] = None
     source_selector: Optional[StrictStr] = Field(default=None, description="A valid JSONata expression that selects the value to monitor from the source. | It should return a single, numeric value.")
-    condition_type: Optional[StrictStr] = Field(default=None, description="The type of condition to apply to the value selected by the source_selector")
-    thresholds: Optional[MonitorThresholds] = None
+    condition_type: Optional[StrictStr] = Field(default=None, description="A comparison operation to apply to the value selected by the source_selector [greater_than, greater_than_or_equal_to, less_than, less_than_or_equal_to, equal_to, not_equal_to]")
+    threshold: Optional[StrictInt] = Field(default=None, description="The type of condition to apply to the value selected by the source_selector")
     alert_routes: List[MonitorAlertRoutesInner]
     last_routed_at: Optional[StrictStr] = Field(default=None, description="The last time the monitor was evaluated and routed.")
     silenced: Optional[StrictBool] = Field(default=None, description="If true, alerts will be created, but no notifications will be sent.")
-    routing_cooldown_period: Optional[StrictStr] = Field(default=None, description="The time period to wait before routing another event after the monitor | has been triggered. It follows the format of a number followed by a time unit.")
-    __properties: ClassVar[List[str]] = ["uid", "name", "description", "source_type", "disabled", "alert", "notefile_filter", "fleet_filter", "source_selector", "condition_type", "thresholds", "alert_routes", "last_routed_at", "silenced", "routing_cooldown_period"]
+    routing_cooldown_period: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The time period to wait before routing another event after the monitor | has been triggered. It follows the format of a number followed by a time unit.")
+    aggregate_function: Optional[StrictStr] = Field(default=None, description="Aggregate function to apply to the selected values before applying the condition. [none, sum, average, max, min]")
+    aggregate_window: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The time window to aggregate the selected values. It follows the format of a number followed by a time unit")
+    per_device: Optional[StrictBool] = Field(default=None, description="Only relevant when using an aggregate_function. If true, the monitor will be evaluated per device, | rather than across the set of selected devices. If true then if a single device matches the specified criteria, | and alert will be created, otherwise the aggregate function will be applied across all devices.")
+    __properties: ClassVar[List[str]] = ["uid", "name", "description", "source_type", "disabled", "alert", "notefile_filter", "fleet_filter", "source_selector", "condition_type", "threshold", "alert_routes", "last_routed_at", "silenced", "routing_cooldown_period", "aggregate_function", "aggregate_window", "per_device"]
 
     @field_validator('source_type')
     def source_type_validate_enum(cls, value):
@@ -64,6 +67,36 @@ class CreateMonitor(BaseModel):
 
         if value not in set(['greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to', 'equal_to', 'not_equal_to']):
             raise ValueError("must be one of enum values ('greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to', 'equal_to', 'not_equal_to')")
+        return value
+
+    @field_validator('routing_cooldown_period')
+    def routing_cooldown_period_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[0-9]+[smh]$", value):
+            raise ValueError(r"must validate the regular expression /^[0-9]+[smh]$/")
+        return value
+
+    @field_validator('aggregate_function')
+    def aggregate_function_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['none', 'sum', 'average', 'max', 'min']):
+            raise ValueError("must be one of enum values ('none', 'sum', 'average', 'max', 'min')")
+        return value
+
+    @field_validator('aggregate_window')
+    def aggregate_window_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[0-9]+[smh]$", value):
+            raise ValueError(r"must validate the regular expression /^[0-9]+[smh]$/")
         return value
 
     model_config = ConfigDict(
@@ -105,9 +138,6 @@ class CreateMonitor(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of thresholds
-        if self.thresholds:
-            _dict['thresholds'] = self.thresholds.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in alert_routes (list)
         _items = []
         if self.alert_routes:
@@ -137,11 +167,14 @@ class CreateMonitor(BaseModel):
             "fleet_filter": obj.get("fleet_filter"),
             "source_selector": obj.get("source_selector"),
             "condition_type": obj.get("condition_type"),
-            "thresholds": MonitorThresholds.from_dict(obj["thresholds"]) if obj.get("thresholds") is not None else None,
+            "threshold": obj.get("threshold"),
             "alert_routes": [MonitorAlertRoutesInner.from_dict(_item) for _item in obj["alert_routes"]] if obj.get("alert_routes") is not None else None,
             "last_routed_at": obj.get("last_routed_at"),
             "silenced": obj.get("silenced"),
-            "routing_cooldown_period": obj.get("routing_cooldown_period")
+            "routing_cooldown_period": obj.get("routing_cooldown_period"),
+            "aggregate_function": obj.get("aggregate_function"),
+            "aggregate_window": obj.get("aggregate_window"),
+            "per_device": obj.get("per_device")
         })
         return _obj
 
