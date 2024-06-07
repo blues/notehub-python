@@ -2300,7 +2300,7 @@ components:
       required: false
       schema:
         type: boolean
-      example: true
+      example: True
 
     fleetUIDQueryParam:
       name: fleetUID

@@ -310,7 +310,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
-    system_files_only = true # bool |  (optional)
+    system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
 
     try:
