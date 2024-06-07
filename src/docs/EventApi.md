@@ -58,7 +58,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
-    system_files_only = true # bool |  (optional)
+    system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
 
     try:
@@ -153,7 +153,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     limit = 50 # int |  (optional) (default to 50)
     cursor = 'cursor_example' # str | A cursor, which can be obtained from the `next_cursor` value from a previous call to this endpoint. The results set returned will include this event as its first result if the given identifier is actually the UID of an event. If this event UID is not found, the parameter is ignored and the results set is the same as if the parameter was not included.  (optional)
     sort_order = 'asc' # str |  (optional) (default to 'asc')
-    system_files_only = true # bool |  (optional)
+    system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
     device_uid = 'device_uid_example' # str | A Device UID. (optional)
     start_date = 1628631763 # int | Unix timestamp (optional)
@@ -253,7 +253,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
-    system_files_only = true # bool |  (optional)
+    system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
 
     try:
@@ -346,7 +346,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     limit = 50 # int |  (optional) (default to 50)
     cursor = 'cursor_example' # str | A cursor, which can be obtained from the `next_cursor` value from a previous call to this endpoint. The results set returned will include this event as its first result if the given identifier is actually the UID of an event. If this event UID is not found, the parameter is ignored and the results set is the same as if the parameter was not included.  (optional)
     sort_order = 'asc' # str |  (optional) (default to 'asc')
-    system_files_only = true # bool |  (optional)
+    system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
     fleet_uid = 'fleet_uid_example' # str |  (optional)
     device_uid = 'device_uid_example' # str | A Device UID. (optional)
