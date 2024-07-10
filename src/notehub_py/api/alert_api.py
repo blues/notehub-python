@@ -46,6 +46,7 @@ class AlertApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        monitor_uid: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,6 +70,8 @@ class AlertApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param monitor_uid:
+        :type monitor_uid: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,6 +98,7 @@ class AlertApi:
             project_uid=project_uid,
             page_size=page_size,
             page_num=page_num,
+            monitor_uid=monitor_uid,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,6 +125,7 @@ class AlertApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        monitor_uid: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,6 +149,8 @@ class AlertApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param monitor_uid:
+        :type monitor_uid: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,6 +177,7 @@ class AlertApi:
             project_uid=project_uid,
             page_size=page_size,
             page_num=page_num,
+            monitor_uid=monitor_uid,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -196,6 +204,7 @@ class AlertApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        monitor_uid: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,6 +228,8 @@ class AlertApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param monitor_uid:
+        :type monitor_uid: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -245,6 +256,7 @@ class AlertApi:
             project_uid=project_uid,
             page_size=page_size,
             page_num=page_num,
+            monitor_uid=monitor_uid,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -266,6 +278,7 @@ class AlertApi:
         project_uid,
         page_size,
         page_num,
+        monitor_uid,
         _request_auth,
         _content_type,
         _headers,
@@ -295,6 +308,10 @@ class AlertApi:
         if page_num is not None:
             
             _query_params.append(('pageNum', page_num))
+            
+        if monitor_uid is not None:
+            
+            _query_params.append(('monitorUID', monitor_uid))
             
         # process the header parameters
         # process the form parameters
