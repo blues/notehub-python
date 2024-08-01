@@ -38,6 +38,7 @@ class TestAlert(unittest.TestCase):
             return Alert(
                 uid = '',
                 monitor_uid = '',
+                monitor_name = '',
                 device_uid = '',
                 created_at = 56,
                 value = 1.337,
