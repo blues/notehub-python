@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uid** | **str** | Alert UID | [optional] 
 **monitor_uid** | **str** | Monitor UID | [optional] 
+**monitor_name** | **str** | Monitor Name | [optional] 
 **device_uid** | **str** | Device UID | [optional] 
 **created_at** | **int** | The time the alert was created | [optional] 
 **value** | **float** | The value that triggered the alert | [optional] 

@@ -40,6 +40,7 @@ class TestGetAlerts200Response(unittest.TestCase):
                     notehub_py.models.alert.Alert(
                         uid = '', 
                         monitor_uid = '', 
+                        monitor_name = '', 
                         device_uid = '', 
                         created_at = 56, 
                         value = 1.337, 
@@ -71,6 +72,7 @@ class TestGetAlerts200Response(unittest.TestCase):
                     notehub_py.models.alert.Alert(
                         uid = '', 
                         monitor_uid = '', 
+                        monitor_name = '', 
                         device_uid = '', 
                         created_at = 56, 
                         value = 1.337, 

@@ -31,6 +31,7 @@ class Alert(BaseModel):
     """ # noqa: E501
     uid: Optional[StrictStr] = Field(default=None, description="Alert UID")
     monitor_uid: Optional[StrictStr] = Field(default=None, description="Monitor UID")
+    monitor_name: Optional[StrictStr] = Field(default=None, description="Monitor Name")
     device_uid: Optional[StrictStr] = Field(default=None, description="Device UID")
     created_at: Optional[StrictInt] = Field(default=None, description="The time the alert was created")
     value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The value that triggered the alert")
@@ -40,7 +41,7 @@ class Alert(BaseModel):
     source: Optional[StrictStr] = Field(default=None, description="The UID of the source of the alert")
     data: Optional[List[AlertDataInner]] = None
     notifications: Optional[List[AlertNotificationsInner]] = None
-    __properties: ClassVar[List[str]] = ["uid", "monitor_uid", "device_uid", "created_at", "value", "resolved", "version", "alert_source", "source", "data", "notifications"]
+    __properties: ClassVar[List[str]] = ["uid", "monitor_uid", "monitor_name", "device_uid", "created_at", "value", "resolved", "version", "alert_source", "source", "data", "notifications"]
 
     @field_validator('alert_source')
     def alert_source_validate_enum(cls, value):
@@ -119,6 +120,7 @@ class Alert(BaseModel):
         _obj = cls.model_validate({
             "uid": obj.get("uid"),
             "monitor_uid": obj.get("monitor_uid"),
+            "monitor_name": obj.get("monitor_name"),
             "device_uid": obj.get("device_uid"),
             "created_at": obj.get("created_at"),
             "value": obj.get("value"),
