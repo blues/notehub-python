@@ -56,6 +56,8 @@ class EventApi:
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
+        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -95,6 +97,10 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param device_uids: Deprecated.
+        :type device_uids: List[str]
+        :param since: Deprecated.
+        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -129,6 +135,8 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            device_uids=device_uids,
+            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -163,6 +171,8 @@ class EventApi:
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
+        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -202,6 +212,10 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param device_uids: Deprecated.
+        :type device_uids: List[str]
+        :param since: Deprecated.
+        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -236,6 +250,8 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            device_uids=device_uids,
+            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -270,6 +286,8 @@ class EventApi:
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
+        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -309,6 +327,10 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param device_uids: Deprecated.
+        :type device_uids: List[str]
+        :param since: Deprecated.
+        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -343,6 +365,8 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            device_uids=device_uids,
+            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -372,6 +396,8 @@ class EventApi:
         end_date,
         system_files_only,
         files,
+        device_uids,
+        since,
         _request_auth,
         _content_type,
         _headers,
@@ -381,6 +407,7 @@ class EventApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUIDs': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -431,6 +458,14 @@ class EventApi:
         if files is not None:
             
             _query_params.append(('files', files))
+            
+        if device_uids is not None:
+            
+            _query_params.append(('deviceUIDs', device_uids))
+            
+        if since is not None:
+            
+            _query_params.append(('since', since))
             
         # process the header parameters
         # process the form parameters
@@ -890,6 +925,8 @@ class EventApi:
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
+        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -927,6 +964,10 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param device_uids: Deprecated.
+        :type device_uids: List[str]
+        :param since: Deprecated.
+        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -960,6 +1001,8 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            device_uids=device_uids,
+            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -993,6 +1036,8 @@ class EventApi:
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
+        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1030,6 +1075,10 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param device_uids: Deprecated.
+        :type device_uids: List[str]
+        :param since: Deprecated.
+        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1063,6 +1112,8 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            device_uids=device_uids,
+            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1096,6 +1147,8 @@ class EventApi:
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
+        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1133,6 +1186,10 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param device_uids: Deprecated.
+        :type device_uids: List[str]
+        :param since: Deprecated.
+        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1166,6 +1223,8 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            device_uids=device_uids,
+            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1194,6 +1253,8 @@ class EventApi:
         end_date,
         system_files_only,
         files,
+        device_uids,
+        since,
         _request_auth,
         _content_type,
         _headers,
@@ -1203,6 +1264,7 @@ class EventApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUIDs': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1251,6 +1313,14 @@ class EventApi:
         if files is not None:
             
             _query_params.append(('files', files))
+            
+        if device_uids is not None:
+            
+            _query_params.append(('deviceUIDs', device_uids))
+            
+        if since is not None:
+            
+            _query_params.append(('since', since))
             
         # process the header parameters
         # process the form parameters

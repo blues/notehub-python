@@ -157,7 +157,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     api_instance = notehub_py.DeviceApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
     device_uid = 'dev:000000000000000' # str | 
-    purge = 'false' # str |  (default to 'false')
+    purge = False # bool |  (default to False)
 
     try:
         api_instance.delete_project_device(project_uid, device_uid, purge)
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_uid** | **str**|  | 
  **device_uid** | **str**|  | 
- **purge** | **str**|  | [default to &#39;false&#39;]
+ **purge** | **bool**|  | [default to False]
 
 ### Return type
 

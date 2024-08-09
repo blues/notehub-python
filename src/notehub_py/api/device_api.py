@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from notehub_py.models.body import Body
@@ -350,7 +350,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         device_uid: StrictStr,
-        purge: StrictStr,
+        purge: StrictBool,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -373,7 +373,7 @@ class DeviceApi:
         :param device_uid: (required)
         :type device_uid: str
         :param purge: (required)
-        :type purge: str
+        :type purge: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -425,7 +425,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         device_uid: StrictStr,
-        purge: StrictStr,
+        purge: StrictBool,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -448,7 +448,7 @@ class DeviceApi:
         :param device_uid: (required)
         :type device_uid: str
         :param purge: (required)
-        :type purge: str
+        :type purge: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -500,7 +500,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         device_uid: StrictStr,
-        purge: StrictStr,
+        purge: StrictBool,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -523,7 +523,7 @@ class DeviceApi:
         :param device_uid: (required)
         :type device_uid: str
         :param purge: (required)
-        :type purge: str
+        :type purge: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
