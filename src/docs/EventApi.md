@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_fleet_events**
-> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files)
+> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
 
 
 
@@ -60,9 +60,11 @@ with notehub_py.ApiClient(configuration) as api_client:
     end_date = 1657894210 # int | Unix timestamp (optional)
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
+    device_uids = ['device_uids_example'] # List[str] | Deprecated. (optional)
+    since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files)
+        api_response = api_instance.get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
         print("The response of EventApi->get_fleet_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -87,6 +89,8 @@ Name | Type | Description  | Notes
  **end_date** | **int**| Unix timestamp | [optional] 
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
+ **device_uids** | [**List[str]**](str.md)| Deprecated. | [optional] 
+ **since** | **str**| Deprecated. | [optional] 
 
 ### Return type
 
@@ -208,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_events**
-> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files)
+> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
 
 
 
@@ -255,9 +259,11 @@ with notehub_py.ApiClient(configuration) as api_client:
     end_date = 1657894210 # int | Unix timestamp (optional)
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
+    device_uids = ['device_uids_example'] # List[str] | Deprecated. (optional)
+    since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files)
+        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
         print("The response of EventApi->get_project_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -281,6 +287,8 @@ Name | Type | Description  | Notes
  **end_date** | **int**| Unix timestamp | [optional] 
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
+ **device_uids** | [**List[str]**](str.md)| Deprecated. | [optional] 
+ **since** | **str**| Deprecated. | [optional] 
 
 ### Return type
 
