@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_fleet_events**
-> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
+> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid=fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
 
 
 
@@ -50,21 +50,26 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.EventApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    fleet_uid = 'fleet_uid_example' # str | 
+    fleet_uid = ['fleet_uid_example'] # List[str] | Filter by Fleet UID (optional)
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
-    device_uid = 'device_uid_example' # str | A Device UID. (optional)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
     sort_by = 'captured' # str |  (optional) (default to 'captured')
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
+    format = 'json' # str | Response format (JSON or CSV) (optional) (default to 'json')
+    serial_number = ['serial_number_example'] # List[str] | Filter by Serial Number (optional)
+    session_uid = ['session_uid_example'] # List[str] | Filter by Session UID (optional)
+    event_uid = ['event_uid_example'] # List[str] | Filter by Event UID (optional)
+    select_fields = 'select_fields_example' # str | Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output. (optional)
     device_uids = ['device_uids_example'] # List[str] | Deprecated. (optional)
     since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
+        api_response = api_instance.get_fleet_events(project_uid, fleet_uid=fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
         print("The response of EventApi->get_fleet_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -79,16 +84,21 @@ with notehub_py.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_uid** | **str**|  | 
- **fleet_uid** | **str**|  | 
+ **fleet_uid** | [**List[str]**](str.md)| Filter by Fleet UID | [optional] 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
- **device_uid** | **str**| A Device UID. | [optional] 
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
  **sort_by** | **str**|  | [optional] [default to &#39;captured&#39;]
  **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
  **start_date** | **int**| Unix timestamp | [optional] 
  **end_date** | **int**| Unix timestamp | [optional] 
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
+ **format** | **str**| Response format (JSON or CSV) | [optional] [default to &#39;json&#39;]
+ **serial_number** | [**List[str]**](str.md)| Filter by Serial Number | [optional] 
+ **session_uid** | [**List[str]**](str.md)| Filter by Session UID | [optional] 
+ **event_uid** | [**List[str]**](str.md)| Filter by Event UID | [optional] 
+ **select_fields** | **str**| Comma-separated list of fields to select from JSON payload (e.g., \&quot;field1,field2.subfield,field3\&quot;), this will reflect the columns in the CSV output. | [optional] 
  **device_uids** | [**List[str]**](str.md)| Deprecated. | [optional] 
  **since** | **str**| Deprecated. | [optional] 
 
@@ -103,13 +113,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, text/csv
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The response body from a GET events request. |  -  |
+**200** | The response body from a GET events request. |  * X-Has-More - True if there are more events <br>  |
 **0** | The response body in case of an API error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -159,7 +169,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
-    device_uid = 'device_uid_example' # str | A Device UID. (optional)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
 
@@ -185,7 +195,7 @@ Name | Type | Description  | Notes
  **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
- **device_uid** | **str**| A Device UID. | [optional] 
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
  **start_date** | **int**| Unix timestamp | [optional] 
  **end_date** | **int**| Unix timestamp | [optional] 
 
@@ -212,7 +222,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_events**
-> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
+> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
 
 
 
@@ -252,18 +262,24 @@ with notehub_py.ApiClient(configuration) as api_client:
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
-    device_uid = 'device_uid_example' # str | A Device UID. (optional)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
     sort_by = 'captured' # str |  (optional) (default to 'captured')
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
+    format = 'json' # str | Response format (JSON or CSV) (optional) (default to 'json')
+    serial_number = ['serial_number_example'] # List[str] | Filter by Serial Number (optional)
+    fleet_uid = ['fleet_uid_example'] # List[str] | Filter by Fleet UID (optional)
+    session_uid = ['session_uid_example'] # List[str] | Filter by Session UID (optional)
+    event_uid = ['event_uid_example'] # List[str] | Filter by Event UID (optional)
+    select_fields = 'select_fields_example' # str | Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output. (optional)
     device_uids = ['device_uids_example'] # List[str] | Deprecated. (optional)
     since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, device_uids=device_uids, since=since)
+        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
         print("The response of EventApi->get_project_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -280,13 +296,19 @@ Name | Type | Description  | Notes
  **project_uid** | **str**|  | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
- **device_uid** | **str**| A Device UID. | [optional] 
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
  **sort_by** | **str**|  | [optional] [default to &#39;captured&#39;]
  **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
  **start_date** | **int**| Unix timestamp | [optional] 
  **end_date** | **int**| Unix timestamp | [optional] 
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
+ **format** | **str**| Response format (JSON or CSV) | [optional] [default to &#39;json&#39;]
+ **serial_number** | [**List[str]**](str.md)| Filter by Serial Number | [optional] 
+ **fleet_uid** | [**List[str]**](str.md)| Filter by Fleet UID | [optional] 
+ **session_uid** | [**List[str]**](str.md)| Filter by Session UID | [optional] 
+ **event_uid** | [**List[str]**](str.md)| Filter by Event UID | [optional] 
+ **select_fields** | **str**| Comma-separated list of fields to select from JSON payload (e.g., \&quot;field1,field2.subfield,field3\&quot;), this will reflect the columns in the CSV output. | [optional] 
  **device_uids** | [**List[str]**](str.md)| Deprecated. | [optional] 
  **since** | **str**| Deprecated. | [optional] 
 
@@ -301,13 +323,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, text/csv
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The response body from a GET events request. |  -  |
+**200** | The response body from a GET events request. |  * X-Has-More - True if there are more events <br>  |
 **0** | The response body in case of an API error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -357,7 +379,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
     fleet_uid = 'fleet_uid_example' # str |  (optional)
-    device_uid = 'device_uid_example' # str | A Device UID. (optional)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
 
     try:
         api_response = api_instance.get_project_events_by_cursor(project_uid, limit=limit, cursor=cursor, sort_order=sort_order, system_files_only=system_files_only, files=files, fleet_uid=fleet_uid, device_uid=device_uid)
@@ -381,7 +403,7 @@ Name | Type | Description  | Notes
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
  **fleet_uid** | **str**|  | [optional] 
- **device_uid** | **str**| A Device UID. | [optional] 
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
 
 ### Return type
 

@@ -5316,7 +5316,7 @@ class ProjectApi:
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="An array of Device UIDs.")] = None,
         fleet_uids: Optional[List[StrictStr]] = None,
         device_tags: Optional[List[StrictStr]] = None,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -5403,7 +5403,7 @@ class ProjectApi:
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="An array of Device UIDs.")] = None,
         fleet_uids: Optional[List[StrictStr]] = None,
         device_tags: Optional[List[StrictStr]] = None,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -5490,7 +5490,7 @@ class ProjectApi:
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="An array of Device UIDs.")] = None,
         fleet_uids: Optional[List[StrictStr]] = None,
         device_tags: Optional[List[StrictStr]] = None,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,

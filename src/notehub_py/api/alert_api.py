@@ -44,7 +44,7 @@ class AlertApi:
     def get_alerts(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         monitor_uid: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -123,7 +123,7 @@ class AlertApi:
     def get_alerts_with_http_info(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         monitor_uid: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -202,7 +202,7 @@ class AlertApi:
     def get_alerts_without_preload_content(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         monitor_uid: Optional[StrictStr] = None,
         _request_timeout: Union[

@@ -94,7 +94,8 @@ class TestGetProjectEvents200Response(unittest.TestCase):
                         temp = 1.337, 
                         environment = notehub_py.models.environment.environment(), )
                     ],
-                has_more = True
+                has_more = True,
+                through = ''
             )
         else:
             return GetProjectEvents200Response(

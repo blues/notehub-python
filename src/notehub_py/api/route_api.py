@@ -879,9 +879,9 @@ class RouteApi:
         self,
         project_uid: StrictStr,
         route_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
@@ -914,7 +914,7 @@ class RouteApi:
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -986,9 +986,9 @@ class RouteApi:
         self,
         project_uid: StrictStr,
         route_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
@@ -1021,7 +1021,7 @@ class RouteApi:
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -1093,9 +1093,9 @@ class RouteApi:
         self,
         project_uid: StrictStr,
         route_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
@@ -1128,7 +1128,7 @@ class RouteApi:
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -1213,6 +1213,7 @@ class RouteApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUID': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

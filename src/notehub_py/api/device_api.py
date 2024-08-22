@@ -3370,7 +3370,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         device_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -3449,7 +3449,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         device_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -3528,7 +3528,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         device_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -3676,7 +3676,7 @@ class DeviceApi:
     def get_project_device_public_keys(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -3751,7 +3751,7 @@ class DeviceApi:
     def get_project_device_public_keys_with_http_info(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -3826,7 +3826,7 @@ class DeviceApi:
     def get_project_device_public_keys_without_preload_content(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -3968,7 +3968,7 @@ class DeviceApi:
     def get_project_devices(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -4043,7 +4043,7 @@ class DeviceApi:
     def get_project_devices_with_http_info(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -4118,7 +4118,7 @@ class DeviceApi:
     def get_project_devices_without_preload_content(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -4261,7 +4261,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         fleet_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -4340,7 +4340,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         fleet_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -4419,7 +4419,7 @@ class DeviceApi:
         self,
         project_uid: StrictStr,
         fleet_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
