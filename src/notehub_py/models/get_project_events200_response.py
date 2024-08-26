@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from notehub_py.models.event import Event
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,8 @@ class GetProjectEvents200Response(BaseModel):
     """ # noqa: E501
     events: List[Event]
     has_more: StrictBool = Field(description="True if there are more events")
-    __properties: ClassVar[List[str]] = ["events", "has_more"]
+    through: Optional[StrictStr] = Field(default=None, description="The UID of the last event returned")
+    __properties: ClassVar[List[str]] = ["events", "has_more", "through"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,7 +92,8 @@ class GetProjectEvents200Response(BaseModel):
 
         _obj = cls.model_validate({
             "events": [Event.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
-            "has_more": obj.get("has_more")
+            "has_more": obj.get("has_more"),
+            "through": obj.get("through")
         })
         return _obj
 

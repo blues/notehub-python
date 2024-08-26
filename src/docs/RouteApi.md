@@ -305,7 +305,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     route_uid = 'route:cbd20093cba58392c9f9bbdd0cdeb1a0' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
-    device_uid = 'device_uid_example' # str | A Device UID. (optional)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
     sort_by = 'captured' # str |  (optional) (default to 'captured')
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
  **route_uid** | **str**|  | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
- **device_uid** | **str**| A Device UID. | [optional] 
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
  **sort_by** | **str**|  | [optional] [default to &#39;captured&#39;]
  **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
  **start_date** | **int**| Unix timestamp | [optional] 

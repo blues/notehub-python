@@ -46,16 +46,21 @@ class EventApi:
     def get_fleet_events(
         self,
         project_uid: StrictStr,
-        fleet_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        fleet_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Fleet UID")] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        format: Annotated[Optional[StrictStr], Field(description="Response format (JSON or CSV)")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Filter by Serial Number")] = None,
+        session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
+        event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
+        select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
         since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
@@ -77,14 +82,14 @@ class EventApi:
 
         :param project_uid: (required)
         :type project_uid: str
-        :param fleet_uid: (required)
-        :type fleet_uid: str
+        :param fleet_uid: Filter by Fleet UID
+        :type fleet_uid: List[str]
         :param page_size:
         :type page_size: int
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -97,6 +102,16 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param format: Response format (JSON or CSV)
+        :type format: str
+        :param serial_number: Filter by Serial Number
+        :type serial_number: List[str]
+        :param session_uid: Filter by Session UID
+        :type session_uid: List[str]
+        :param event_uid: Filter by Event UID
+        :type event_uid: List[str]
+        :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
+        :type select_fields: str
         :param device_uids: Deprecated.
         :type device_uids: List[str]
         :param since: Deprecated.
@@ -135,6 +150,11 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            format=format,
+            serial_number=serial_number,
+            session_uid=session_uid,
+            event_uid=event_uid,
+            select_fields=select_fields,
             device_uids=device_uids,
             since=since,
             _request_auth=_request_auth,
@@ -161,16 +181,21 @@ class EventApi:
     def get_fleet_events_with_http_info(
         self,
         project_uid: StrictStr,
-        fleet_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        fleet_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Fleet UID")] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        format: Annotated[Optional[StrictStr], Field(description="Response format (JSON or CSV)")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Filter by Serial Number")] = None,
+        session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
+        event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
+        select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
         since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
@@ -192,14 +217,14 @@ class EventApi:
 
         :param project_uid: (required)
         :type project_uid: str
-        :param fleet_uid: (required)
-        :type fleet_uid: str
+        :param fleet_uid: Filter by Fleet UID
+        :type fleet_uid: List[str]
         :param page_size:
         :type page_size: int
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -212,6 +237,16 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param format: Response format (JSON or CSV)
+        :type format: str
+        :param serial_number: Filter by Serial Number
+        :type serial_number: List[str]
+        :param session_uid: Filter by Session UID
+        :type session_uid: List[str]
+        :param event_uid: Filter by Event UID
+        :type event_uid: List[str]
+        :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
+        :type select_fields: str
         :param device_uids: Deprecated.
         :type device_uids: List[str]
         :param since: Deprecated.
@@ -250,6 +285,11 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            format=format,
+            serial_number=serial_number,
+            session_uid=session_uid,
+            event_uid=event_uid,
+            select_fields=select_fields,
             device_uids=device_uids,
             since=since,
             _request_auth=_request_auth,
@@ -276,16 +316,21 @@ class EventApi:
     def get_fleet_events_without_preload_content(
         self,
         project_uid: StrictStr,
-        fleet_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        fleet_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Fleet UID")] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        format: Annotated[Optional[StrictStr], Field(description="Response format (JSON or CSV)")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Filter by Serial Number")] = None,
+        session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
+        event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
+        select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
         since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
@@ -307,14 +352,14 @@ class EventApi:
 
         :param project_uid: (required)
         :type project_uid: str
-        :param fleet_uid: (required)
-        :type fleet_uid: str
+        :param fleet_uid: Filter by Fleet UID
+        :type fleet_uid: List[str]
         :param page_size:
         :type page_size: int
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -327,6 +372,16 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param format: Response format (JSON or CSV)
+        :type format: str
+        :param serial_number: Filter by Serial Number
+        :type serial_number: List[str]
+        :param session_uid: Filter by Session UID
+        :type session_uid: List[str]
+        :param event_uid: Filter by Event UID
+        :type event_uid: List[str]
+        :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
+        :type select_fields: str
         :param device_uids: Deprecated.
         :type device_uids: List[str]
         :param since: Deprecated.
@@ -365,6 +420,11 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            format=format,
+            serial_number=serial_number,
+            session_uid=session_uid,
+            event_uid=event_uid,
+            select_fields=select_fields,
             device_uids=device_uids,
             since=since,
             _request_auth=_request_auth,
@@ -396,6 +456,11 @@ class EventApi:
         end_date,
         system_files_only,
         files,
+        format,
+        serial_number,
+        session_uid,
+        event_uid,
+        select_fields,
         device_uids,
         since,
         _request_auth,
@@ -407,6 +472,11 @@ class EventApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fleetUID': 'multi',
+            'deviceUID': 'multi',
+            'serialNumber': 'multi',
+            'sessionUID': 'multi',
+            'eventUID': 'multi',
             'deviceUIDs': 'multi',
         }
 
@@ -420,9 +490,11 @@ class EventApi:
         # process the path parameters
         if project_uid is not None:
             _path_params['projectUID'] = project_uid
-        if fleet_uid is not None:
-            _path_params['fleetUID'] = fleet_uid
         # process the query parameters
+        if fleet_uid is not None:
+            
+            _query_params.append(('fleetUID', fleet_uid))
+            
         if page_size is not None:
             
             _query_params.append(('pageSize', page_size))
@@ -459,6 +531,26 @@ class EventApi:
             
             _query_params.append(('files', files))
             
+        if format is not None:
+            
+            _query_params.append(('format', format))
+            
+        if serial_number is not None:
+            
+            _query_params.append(('serialNumber', serial_number))
+            
+        if session_uid is not None:
+            
+            _query_params.append(('sessionUID', session_uid))
+            
+        if event_uid is not None:
+            
+            _query_params.append(('eventUID', event_uid))
+            
+        if select_fields is not None:
+            
+            _query_params.append(('selectFields', select_fields))
+            
         if device_uids is not None:
             
             _query_params.append(('deviceUIDs', device_uids))
@@ -475,7 +567,8 @@ class EventApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/csv'
             ]
         )
 
@@ -513,7 +606,7 @@ class EventApi:
         sort_order: Optional[StrictStr] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         _request_timeout: Union[
@@ -548,7 +641,7 @@ class EventApi:
         :param files:
         :type files: str
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param start_date: Unix timestamp
         :type start_date: int
         :param end_date: Unix timestamp
@@ -616,7 +709,7 @@ class EventApi:
         sort_order: Optional[StrictStr] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         _request_timeout: Union[
@@ -651,7 +744,7 @@ class EventApi:
         :param files:
         :type files: str
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param start_date: Unix timestamp
         :type start_date: int
         :param end_date: Unix timestamp
@@ -719,7 +812,7 @@ class EventApi:
         sort_order: Optional[StrictStr] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         _request_timeout: Union[
@@ -754,7 +847,7 @@ class EventApi:
         :param files:
         :type files: str
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param start_date: Unix timestamp
         :type start_date: int
         :param end_date: Unix timestamp
@@ -829,6 +922,7 @@ class EventApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUID': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -916,15 +1010,21 @@ class EventApi:
     def get_project_events(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        format: Annotated[Optional[StrictStr], Field(description="Response format (JSON or CSV)")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Filter by Serial Number")] = None,
+        fleet_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Fleet UID")] = None,
+        session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
+        event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
+        select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
         since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
@@ -951,7 +1051,7 @@ class EventApi:
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -964,6 +1064,18 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param format: Response format (JSON or CSV)
+        :type format: str
+        :param serial_number: Filter by Serial Number
+        :type serial_number: List[str]
+        :param fleet_uid: Filter by Fleet UID
+        :type fleet_uid: List[str]
+        :param session_uid: Filter by Session UID
+        :type session_uid: List[str]
+        :param event_uid: Filter by Event UID
+        :type event_uid: List[str]
+        :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
+        :type select_fields: str
         :param device_uids: Deprecated.
         :type device_uids: List[str]
         :param since: Deprecated.
@@ -1001,6 +1113,12 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            format=format,
+            serial_number=serial_number,
+            fleet_uid=fleet_uid,
+            session_uid=session_uid,
+            event_uid=event_uid,
+            select_fields=select_fields,
             device_uids=device_uids,
             since=since,
             _request_auth=_request_auth,
@@ -1027,15 +1145,21 @@ class EventApi:
     def get_project_events_with_http_info(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        format: Annotated[Optional[StrictStr], Field(description="Response format (JSON or CSV)")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Filter by Serial Number")] = None,
+        fleet_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Fleet UID")] = None,
+        session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
+        event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
+        select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
         since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
@@ -1062,7 +1186,7 @@ class EventApi:
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -1075,6 +1199,18 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param format: Response format (JSON or CSV)
+        :type format: str
+        :param serial_number: Filter by Serial Number
+        :type serial_number: List[str]
+        :param fleet_uid: Filter by Fleet UID
+        :type fleet_uid: List[str]
+        :param session_uid: Filter by Session UID
+        :type session_uid: List[str]
+        :param event_uid: Filter by Event UID
+        :type event_uid: List[str]
+        :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
+        :type select_fields: str
         :param device_uids: Deprecated.
         :type device_uids: List[str]
         :param since: Deprecated.
@@ -1112,6 +1248,12 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            format=format,
+            serial_number=serial_number,
+            fleet_uid=fleet_uid,
+            session_uid=session_uid,
+            event_uid=event_uid,
+            select_fields=select_fields,
             device_uids=device_uids,
             since=since,
             _request_auth=_request_auth,
@@ -1138,15 +1280,21 @@ class EventApi:
     def get_project_events_without_preload_content(
         self,
         project_uid: StrictStr,
-        page_size: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         sort_by: Optional[StrictStr] = None,
         sort_order: Optional[StrictStr] = None,
         start_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         end_date: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Unix timestamp")] = None,
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
+        format: Annotated[Optional[StrictStr], Field(description="Response format (JSON or CSV)")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Filter by Serial Number")] = None,
+        fleet_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Fleet UID")] = None,
+        session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
+        event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
+        select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
         device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
         since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
@@ -1173,7 +1321,7 @@ class EventApi:
         :param page_num:
         :type page_num: int
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param sort_by:
         :type sort_by: str
         :param sort_order:
@@ -1186,6 +1334,18 @@ class EventApi:
         :type system_files_only: bool
         :param files:
         :type files: str
+        :param format: Response format (JSON or CSV)
+        :type format: str
+        :param serial_number: Filter by Serial Number
+        :type serial_number: List[str]
+        :param fleet_uid: Filter by Fleet UID
+        :type fleet_uid: List[str]
+        :param session_uid: Filter by Session UID
+        :type session_uid: List[str]
+        :param event_uid: Filter by Event UID
+        :type event_uid: List[str]
+        :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
+        :type select_fields: str
         :param device_uids: Deprecated.
         :type device_uids: List[str]
         :param since: Deprecated.
@@ -1223,6 +1383,12 @@ class EventApi:
             end_date=end_date,
             system_files_only=system_files_only,
             files=files,
+            format=format,
+            serial_number=serial_number,
+            fleet_uid=fleet_uid,
+            session_uid=session_uid,
+            event_uid=event_uid,
+            select_fields=select_fields,
             device_uids=device_uids,
             since=since,
             _request_auth=_request_auth,
@@ -1253,6 +1419,12 @@ class EventApi:
         end_date,
         system_files_only,
         files,
+        format,
+        serial_number,
+        fleet_uid,
+        session_uid,
+        event_uid,
+        select_fields,
         device_uids,
         since,
         _request_auth,
@@ -1264,6 +1436,11 @@ class EventApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUID': 'multi',
+            'serialNumber': 'multi',
+            'fleetUID': 'multi',
+            'sessionUID': 'multi',
+            'eventUID': 'multi',
             'deviceUIDs': 'multi',
         }
 
@@ -1314,6 +1491,30 @@ class EventApi:
             
             _query_params.append(('files', files))
             
+        if format is not None:
+            
+            _query_params.append(('format', format))
+            
+        if serial_number is not None:
+            
+            _query_params.append(('serialNumber', serial_number))
+            
+        if fleet_uid is not None:
+            
+            _query_params.append(('fleetUID', fleet_uid))
+            
+        if session_uid is not None:
+            
+            _query_params.append(('sessionUID', session_uid))
+            
+        if event_uid is not None:
+            
+            _query_params.append(('eventUID', event_uid))
+            
+        if select_fields is not None:
+            
+            _query_params.append(('selectFields', select_fields))
+            
         if device_uids is not None:
             
             _query_params.append(('deviceUIDs', device_uids))
@@ -1330,7 +1531,8 @@ class EventApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/csv'
             ]
         )
 
@@ -1368,7 +1570,7 @@ class EventApi:
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
         fleet_uid: Optional[StrictStr] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1401,7 +1603,7 @@ class EventApi:
         :param fleet_uid:
         :type fleet_uid: str
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1463,7 +1665,7 @@ class EventApi:
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
         fleet_uid: Optional[StrictStr] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1496,7 +1698,7 @@ class EventApi:
         :param fleet_uid:
         :type fleet_uid: str
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1558,7 +1760,7 @@ class EventApi:
         system_files_only: Optional[StrictBool] = None,
         files: Optional[StrictStr] = None,
         fleet_uid: Optional[StrictStr] = None,
-        device_uid: Annotated[Optional[StrictStr], Field(description="A Device UID.")] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1591,7 +1793,7 @@ class EventApi:
         :param fleet_uid:
         :type fleet_uid: str
         :param device_uid: A Device UID.
-        :type device_uid: str
+        :type device_uid: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1658,6 +1860,7 @@ class EventApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUID': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

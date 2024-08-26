@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **events** | [**List[Event]**](Event.md) |  | 
 **has_more** | **bool** | True if there are more events | 
+**through** | **str** | The UID of the last event returned | [optional] 
 
 ## Example
 
