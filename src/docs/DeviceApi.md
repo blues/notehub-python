@@ -1165,7 +1165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_devices**
-> GetProjectDevices200Response get_project_devices(project_uid, page_size=page_size, page_num=page_num)
+> GetProjectDevices200Response get_project_devices(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
 
 
 
@@ -1205,9 +1205,18 @@ with notehub_py.ApiClient(configuration) as api_client:
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
+    tag = ['tag_example'] # List[str] | Tag filter (optional)
+    serial_number = ['serial_number_example'] # List[str] | Serial number filter (optional)
+    fleet_uid = 'fleet_uid_example' # str |  (optional)
+    notecard_firmware = ['notecard_firmware_example'] # List[str] | Firmware version filter (optional)
+    location = ['location_example'] # List[str] | Location filter (optional)
+    host_firmware = ['host_firmware_example'] # List[str] | Host firmware filter (optional)
+    product_uid = ['product_uid_example'] # List[str] |  (optional)
+    sku = ['sku_example'] # List[str] | SKU filter (optional)
 
     try:
-        api_response = api_instance.get_project_devices(project_uid, page_size=page_size, page_num=page_num)
+        api_response = api_instance.get_project_devices(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
         print("The response of DeviceApi->get_project_devices:\n")
         pprint(api_response)
     except Exception as e:
@@ -1224,6 +1233,15 @@ Name | Type | Description  | Notes
  **project_uid** | **str**|  | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
+ **tag** | [**List[str]**](str.md)| Tag filter | [optional] 
+ **serial_number** | [**List[str]**](str.md)| Serial number filter | [optional] 
+ **fleet_uid** | **str**|  | [optional] 
+ **notecard_firmware** | [**List[str]**](str.md)| Firmware version filter | [optional] 
+ **location** | [**List[str]**](str.md)| Location filter | [optional] 
+ **host_firmware** | [**List[str]**](str.md)| Host firmware filter | [optional] 
+ **product_uid** | [**List[str]**](str.md)|  | [optional] 
+ **sku** | [**List[str]**](str.md)| SKU filter | [optional] 
 
 ### Return type
 
@@ -1248,7 +1266,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_fleet_devices**
-> GetProjectDevices200Response get_project_fleet_devices(project_uid, fleet_uid, page_size=page_size, page_num=page_num)
+> GetProjectDevices200Response get_project_fleet_devices(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, tag=tag, serial_number=serial_number, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
 
 
 
@@ -1289,9 +1307,17 @@ with notehub_py.ApiClient(configuration) as api_client:
     fleet_uid = 'fleet_uid_example' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
+    tag = ['tag_example'] # List[str] | Tag filter (optional)
+    serial_number = ['serial_number_example'] # List[str] | Serial number filter (optional)
+    notecard_firmware = ['notecard_firmware_example'] # List[str] | Firmware version filter (optional)
+    location = ['location_example'] # List[str] | Location filter (optional)
+    host_firmware = ['host_firmware_example'] # List[str] | Host firmware filter (optional)
+    product_uid = ['product_uid_example'] # List[str] |  (optional)
+    sku = ['sku_example'] # List[str] | SKU filter (optional)
 
     try:
-        api_response = api_instance.get_project_fleet_devices(project_uid, fleet_uid, page_size=page_size, page_num=page_num)
+        api_response = api_instance.get_project_fleet_devices(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, tag=tag, serial_number=serial_number, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
         print("The response of DeviceApi->get_project_fleet_devices:\n")
         pprint(api_response)
     except Exception as e:
@@ -1309,6 +1335,14 @@ Name | Type | Description  | Notes
  **fleet_uid** | **str**|  | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
+ **tag** | [**List[str]**](str.md)| Tag filter | [optional] 
+ **serial_number** | [**List[str]**](str.md)| Serial number filter | [optional] 
+ **notecard_firmware** | [**List[str]**](str.md)| Firmware version filter | [optional] 
+ **location** | [**List[str]**](str.md)| Location filter | [optional] 
+ **host_firmware** | [**List[str]**](str.md)| Host firmware filter | [optional] 
+ **product_uid** | [**List[str]**](str.md)|  | [optional] 
+ **sku** | [**List[str]**](str.md)| SKU filter | [optional] 
 
 ### Return type
 

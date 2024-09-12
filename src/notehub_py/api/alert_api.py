@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Annotated
 from notehub_py.models.get_alerts200_response import GetAlerts200Response
 
@@ -46,7 +46,7 @@ class AlertApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        monitor_uid: Optional[StrictStr] = None,
+        monitor_uid: Optional[List[StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -71,7 +71,7 @@ class AlertApi:
         :param page_num:
         :type page_num: int
         :param monitor_uid:
-        :type monitor_uid: str
+        :type monitor_uid: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -125,7 +125,7 @@ class AlertApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        monitor_uid: Optional[StrictStr] = None,
+        monitor_uid: Optional[List[StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -150,7 +150,7 @@ class AlertApi:
         :param page_num:
         :type page_num: int
         :param monitor_uid:
-        :type monitor_uid: str
+        :type monitor_uid: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -204,7 +204,7 @@ class AlertApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
-        monitor_uid: Optional[StrictStr] = None,
+        monitor_uid: Optional[List[StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -229,7 +229,7 @@ class AlertApi:
         :param page_num:
         :type page_num: int
         :param monitor_uid:
-        :type monitor_uid: str
+        :type monitor_uid: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -288,6 +288,7 @@ class AlertApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'monitorUID': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
