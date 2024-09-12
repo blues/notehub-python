@@ -3970,6 +3970,15 @@ class DeviceApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
+        tag: Annotated[Optional[List[StrictStr]], Field(description="Tag filter")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Serial number filter")] = None,
+        fleet_uid: Optional[StrictStr] = None,
+        notecard_firmware: Annotated[Optional[List[StrictStr]], Field(description="Firmware version filter")] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="Location filter")] = None,
+        host_firmware: Annotated[Optional[List[StrictStr]], Field(description="Host firmware filter")] = None,
+        product_uid: Optional[List[StrictStr]] = None,
+        sku: Annotated[Optional[List[StrictStr]], Field(description="SKU filter")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3993,6 +4002,24 @@ class DeviceApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param device_uid: A Device UID.
+        :type device_uid: List[str]
+        :param tag: Tag filter
+        :type tag: List[str]
+        :param serial_number: Serial number filter
+        :type serial_number: List[str]
+        :param fleet_uid:
+        :type fleet_uid: str
+        :param notecard_firmware: Firmware version filter
+        :type notecard_firmware: List[str]
+        :param location: Location filter
+        :type location: List[str]
+        :param host_firmware: Host firmware filter
+        :type host_firmware: List[str]
+        :param product_uid:
+        :type product_uid: List[str]
+        :param sku: SKU filter
+        :type sku: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4019,6 +4046,15 @@ class DeviceApi:
             project_uid=project_uid,
             page_size=page_size,
             page_num=page_num,
+            device_uid=device_uid,
+            tag=tag,
+            serial_number=serial_number,
+            fleet_uid=fleet_uid,
+            notecard_firmware=notecard_firmware,
+            location=location,
+            host_firmware=host_firmware,
+            product_uid=product_uid,
+            sku=sku,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4045,6 +4081,15 @@ class DeviceApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
+        tag: Annotated[Optional[List[StrictStr]], Field(description="Tag filter")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Serial number filter")] = None,
+        fleet_uid: Optional[StrictStr] = None,
+        notecard_firmware: Annotated[Optional[List[StrictStr]], Field(description="Firmware version filter")] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="Location filter")] = None,
+        host_firmware: Annotated[Optional[List[StrictStr]], Field(description="Host firmware filter")] = None,
+        product_uid: Optional[List[StrictStr]] = None,
+        sku: Annotated[Optional[List[StrictStr]], Field(description="SKU filter")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4068,6 +4113,24 @@ class DeviceApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param device_uid: A Device UID.
+        :type device_uid: List[str]
+        :param tag: Tag filter
+        :type tag: List[str]
+        :param serial_number: Serial number filter
+        :type serial_number: List[str]
+        :param fleet_uid:
+        :type fleet_uid: str
+        :param notecard_firmware: Firmware version filter
+        :type notecard_firmware: List[str]
+        :param location: Location filter
+        :type location: List[str]
+        :param host_firmware: Host firmware filter
+        :type host_firmware: List[str]
+        :param product_uid:
+        :type product_uid: List[str]
+        :param sku: SKU filter
+        :type sku: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4094,6 +4157,15 @@ class DeviceApi:
             project_uid=project_uid,
             page_size=page_size,
             page_num=page_num,
+            device_uid=device_uid,
+            tag=tag,
+            serial_number=serial_number,
+            fleet_uid=fleet_uid,
+            notecard_firmware=notecard_firmware,
+            location=location,
+            host_firmware=host_firmware,
+            product_uid=product_uid,
+            sku=sku,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4120,6 +4192,15 @@ class DeviceApi:
         project_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
+        tag: Annotated[Optional[List[StrictStr]], Field(description="Tag filter")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Serial number filter")] = None,
+        fleet_uid: Optional[StrictStr] = None,
+        notecard_firmware: Annotated[Optional[List[StrictStr]], Field(description="Firmware version filter")] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="Location filter")] = None,
+        host_firmware: Annotated[Optional[List[StrictStr]], Field(description="Host firmware filter")] = None,
+        product_uid: Optional[List[StrictStr]] = None,
+        sku: Annotated[Optional[List[StrictStr]], Field(description="SKU filter")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4143,6 +4224,24 @@ class DeviceApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param device_uid: A Device UID.
+        :type device_uid: List[str]
+        :param tag: Tag filter
+        :type tag: List[str]
+        :param serial_number: Serial number filter
+        :type serial_number: List[str]
+        :param fleet_uid:
+        :type fleet_uid: str
+        :param notecard_firmware: Firmware version filter
+        :type notecard_firmware: List[str]
+        :param location: Location filter
+        :type location: List[str]
+        :param host_firmware: Host firmware filter
+        :type host_firmware: List[str]
+        :param product_uid:
+        :type product_uid: List[str]
+        :param sku: SKU filter
+        :type sku: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4169,6 +4268,15 @@ class DeviceApi:
             project_uid=project_uid,
             page_size=page_size,
             page_num=page_num,
+            device_uid=device_uid,
+            tag=tag,
+            serial_number=serial_number,
+            fleet_uid=fleet_uid,
+            notecard_firmware=notecard_firmware,
+            location=location,
+            host_firmware=host_firmware,
+            product_uid=product_uid,
+            sku=sku,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4190,6 +4298,15 @@ class DeviceApi:
         project_uid,
         page_size,
         page_num,
+        device_uid,
+        tag,
+        serial_number,
+        fleet_uid,
+        notecard_firmware,
+        location,
+        host_firmware,
+        product_uid,
+        sku,
         _request_auth,
         _content_type,
         _headers,
@@ -4199,6 +4316,14 @@ class DeviceApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUID': 'multi',
+            'tag': 'multi',
+            'serialNumber': 'multi',
+            'notecardFirmware': 'multi',
+            'location': 'multi',
+            'hostFirmware': 'multi',
+            'productUID': 'multi',
+            'sku': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4219,6 +4344,42 @@ class DeviceApi:
         if page_num is not None:
             
             _query_params.append(('pageNum', page_num))
+            
+        if device_uid is not None:
+            
+            _query_params.append(('deviceUID', device_uid))
+            
+        if tag is not None:
+            
+            _query_params.append(('tag', tag))
+            
+        if serial_number is not None:
+            
+            _query_params.append(('serialNumber', serial_number))
+            
+        if fleet_uid is not None:
+            
+            _query_params.append(('fleetUID', fleet_uid))
+            
+        if notecard_firmware is not None:
+            
+            _query_params.append(('notecardFirmware', notecard_firmware))
+            
+        if location is not None:
+            
+            _query_params.append(('location', location))
+            
+        if host_firmware is not None:
+            
+            _query_params.append(('hostFirmware', host_firmware))
+            
+        if product_uid is not None:
+            
+            _query_params.append(('productUID', product_uid))
+            
+        if sku is not None:
+            
+            _query_params.append(('sku', sku))
             
         # process the header parameters
         # process the form parameters
@@ -4263,6 +4424,14 @@ class DeviceApi:
         fleet_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
+        tag: Annotated[Optional[List[StrictStr]], Field(description="Tag filter")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Serial number filter")] = None,
+        notecard_firmware: Annotated[Optional[List[StrictStr]], Field(description="Firmware version filter")] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="Location filter")] = None,
+        host_firmware: Annotated[Optional[List[StrictStr]], Field(description="Host firmware filter")] = None,
+        product_uid: Optional[List[StrictStr]] = None,
+        sku: Annotated[Optional[List[StrictStr]], Field(description="SKU filter")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4288,6 +4457,22 @@ class DeviceApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param device_uid: A Device UID.
+        :type device_uid: List[str]
+        :param tag: Tag filter
+        :type tag: List[str]
+        :param serial_number: Serial number filter
+        :type serial_number: List[str]
+        :param notecard_firmware: Firmware version filter
+        :type notecard_firmware: List[str]
+        :param location: Location filter
+        :type location: List[str]
+        :param host_firmware: Host firmware filter
+        :type host_firmware: List[str]
+        :param product_uid:
+        :type product_uid: List[str]
+        :param sku: SKU filter
+        :type sku: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4315,6 +4500,14 @@ class DeviceApi:
             fleet_uid=fleet_uid,
             page_size=page_size,
             page_num=page_num,
+            device_uid=device_uid,
+            tag=tag,
+            serial_number=serial_number,
+            notecard_firmware=notecard_firmware,
+            location=location,
+            host_firmware=host_firmware,
+            product_uid=product_uid,
+            sku=sku,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4342,6 +4535,14 @@ class DeviceApi:
         fleet_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
+        tag: Annotated[Optional[List[StrictStr]], Field(description="Tag filter")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Serial number filter")] = None,
+        notecard_firmware: Annotated[Optional[List[StrictStr]], Field(description="Firmware version filter")] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="Location filter")] = None,
+        host_firmware: Annotated[Optional[List[StrictStr]], Field(description="Host firmware filter")] = None,
+        product_uid: Optional[List[StrictStr]] = None,
+        sku: Annotated[Optional[List[StrictStr]], Field(description="SKU filter")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4367,6 +4568,22 @@ class DeviceApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param device_uid: A Device UID.
+        :type device_uid: List[str]
+        :param tag: Tag filter
+        :type tag: List[str]
+        :param serial_number: Serial number filter
+        :type serial_number: List[str]
+        :param notecard_firmware: Firmware version filter
+        :type notecard_firmware: List[str]
+        :param location: Location filter
+        :type location: List[str]
+        :param host_firmware: Host firmware filter
+        :type host_firmware: List[str]
+        :param product_uid:
+        :type product_uid: List[str]
+        :param sku: SKU filter
+        :type sku: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4394,6 +4611,14 @@ class DeviceApi:
             fleet_uid=fleet_uid,
             page_size=page_size,
             page_num=page_num,
+            device_uid=device_uid,
+            tag=tag,
+            serial_number=serial_number,
+            notecard_firmware=notecard_firmware,
+            location=location,
+            host_firmware=host_firmware,
+            product_uid=product_uid,
+            sku=sku,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4421,6 +4646,14 @@ class DeviceApi:
         fleet_uid: StrictStr,
         page_size: Optional[Annotated[int, Field(le=10000, strict=True, ge=1)]] = None,
         page_num: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        device_uid: Annotated[Optional[List[StrictStr]], Field(description="A Device UID.")] = None,
+        tag: Annotated[Optional[List[StrictStr]], Field(description="Tag filter")] = None,
+        serial_number: Annotated[Optional[List[StrictStr]], Field(description="Serial number filter")] = None,
+        notecard_firmware: Annotated[Optional[List[StrictStr]], Field(description="Firmware version filter")] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="Location filter")] = None,
+        host_firmware: Annotated[Optional[List[StrictStr]], Field(description="Host firmware filter")] = None,
+        product_uid: Optional[List[StrictStr]] = None,
+        sku: Annotated[Optional[List[StrictStr]], Field(description="SKU filter")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4446,6 +4679,22 @@ class DeviceApi:
         :type page_size: int
         :param page_num:
         :type page_num: int
+        :param device_uid: A Device UID.
+        :type device_uid: List[str]
+        :param tag: Tag filter
+        :type tag: List[str]
+        :param serial_number: Serial number filter
+        :type serial_number: List[str]
+        :param notecard_firmware: Firmware version filter
+        :type notecard_firmware: List[str]
+        :param location: Location filter
+        :type location: List[str]
+        :param host_firmware: Host firmware filter
+        :type host_firmware: List[str]
+        :param product_uid:
+        :type product_uid: List[str]
+        :param sku: SKU filter
+        :type sku: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4473,6 +4722,14 @@ class DeviceApi:
             fleet_uid=fleet_uid,
             page_size=page_size,
             page_num=page_num,
+            device_uid=device_uid,
+            tag=tag,
+            serial_number=serial_number,
+            notecard_firmware=notecard_firmware,
+            location=location,
+            host_firmware=host_firmware,
+            product_uid=product_uid,
+            sku=sku,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4495,6 +4752,14 @@ class DeviceApi:
         fleet_uid,
         page_size,
         page_num,
+        device_uid,
+        tag,
+        serial_number,
+        notecard_firmware,
+        location,
+        host_firmware,
+        product_uid,
+        sku,
         _request_auth,
         _content_type,
         _headers,
@@ -4504,6 +4769,14 @@ class DeviceApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceUID': 'multi',
+            'tag': 'multi',
+            'serialNumber': 'multi',
+            'notecardFirmware': 'multi',
+            'location': 'multi',
+            'hostFirmware': 'multi',
+            'productUID': 'multi',
+            'sku': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4526,6 +4799,38 @@ class DeviceApi:
         if page_num is not None:
             
             _query_params.append(('pageNum', page_num))
+            
+        if device_uid is not None:
+            
+            _query_params.append(('deviceUID', device_uid))
+            
+        if tag is not None:
+            
+            _query_params.append(('tag', tag))
+            
+        if serial_number is not None:
+            
+            _query_params.append(('serialNumber', serial_number))
+            
+        if notecard_firmware is not None:
+            
+            _query_params.append(('notecardFirmware', notecard_firmware))
+            
+        if location is not None:
+            
+            _query_params.append(('location', location))
+            
+        if host_firmware is not None:
+            
+            _query_params.append(('hostFirmware', host_firmware))
+            
+        if product_uid is not None:
+            
+            _query_params.append(('productUID', product_uid))
+            
+        if sku is not None:
+            
+            _query_params.append(('sku', sku))
             
         # process the header parameters
         # process the form parameters

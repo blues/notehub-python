@@ -48,7 +48,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
-    monitor_uid = 'monitor_uid_example' # str |  (optional)
+    monitor_uid = ['monitor_uid_example'] # List[str] |  (optional)
 
     try:
         api_response = api_instance.get_alerts(project_uid, page_size=page_size, page_num=page_num, monitor_uid=monitor_uid)
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **project_uid** | **str**|  | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
- **monitor_uid** | **str**|  | [optional] 
+ **monitor_uid** | [**List[str]**](str.md)|  | [optional] 
 
 ### Return type
 
