@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **version** | **int** | The version of the alert | [optional] 
 **alert_source** | **str** | The source of the alert | [optional] 
 **source** | **str** | The UID of the source of the alert | [optional] 
+**monitor_type** | **str** | The type of monitor that triggered the alert | [optional] 
+**field_name** | **str** | The field name that triggered the alert | [optional] 
 **data** | [**List[AlertDataInner]**](AlertDataInner.md) |  | [optional] 
 **notifications** | [**List[AlertNotificationsInner]**](AlertNotificationsInner.md) |  | [optional] 
 

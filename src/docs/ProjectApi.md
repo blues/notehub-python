@@ -13,9 +13,14 @@ Method | HTTP request | Description
 [**delete_fleet_environment_variable**](ProjectApi.md#delete_fleet_environment_variable) | **DELETE** /v1/projects/{projectUID}/fleets/{fleetUID}/environment_variables/{key} | 
 [**delete_project**](ProjectApi.md#delete_project) | **DELETE** /v1/projects/{projectUID} | 
 [**delete_project_environment_variable**](ProjectApi.md#delete_project_environment_variable) | **DELETE** /v1/projects/{projectUID}/environment_variables/{key} | 
+[**dfu_action**](ProjectApi.md#dfu_action) | **POST** /v1/projects/{projectUID}/dfu/{firmwareType}/{action} | 
 [**disable_global_transformation**](ProjectApi.md#disable_global_transformation) | **POST** /v1/projects/{projectUID}/global-transformation/disable | 
 [**enable_global_transformation**](ProjectApi.md#enable_global_transformation) | **POST** /v1/projects/{projectUID}/global-transformation/enable | 
+[**get_device_dfu_history**](ProjectApi.md#get_device_dfu_history) | **GET** /v1/projects/{projectUID}/devices/{deviceUID}/dfu/{firmwareType}/history | 
+[**get_device_dfu_status**](ProjectApi.md#get_device_dfu_status) | **GET** /v1/projects/{projectUID}/devices/{deviceUID}/dfu/{firmwareType}/status | 
 [**get_device_fleets**](ProjectApi.md#get_device_fleets) | **GET** /v1/projects/{projectUID}/devices/{deviceUID}/fleets | 
+[**get_devices_dfu_history**](ProjectApi.md#get_devices_dfu_history) | **GET** /v1/projects/{projectUID}/dfu/{firmwareType}/history | 
+[**get_devices_dfu_status**](ProjectApi.md#get_devices_dfu_status) | **GET** /v1/projects/{projectUID}/dfu/{firmwareType}/status | 
 [**get_firmware_info**](ProjectApi.md#get_firmware_info) | **GET** /v1/projects/{projectUID}/firmware | 
 [**get_fleet_environment_variables**](ProjectApi.md#get_fleet_environment_variables) | **GET** /v1/projects/{projectUID}/fleets/{fleetUID}/environment_variables | 
 [**get_project**](ProjectApi.md#get_project) | **GET** /v1/projects/{projectUID} | 
@@ -23,7 +28,6 @@ Method | HTTP request | Description
 [**get_project_environment_variables**](ProjectApi.md#get_project_environment_variables) | **GET** /v1/projects/{projectUID}/environment_variables | 
 [**get_project_fleets**](ProjectApi.md#get_project_fleets) | **GET** /v1/projects/{projectUID}/fleets | 
 [**get_project_members**](ProjectApi.md#get_project_members) | **GET** /v1/projects/{projectUID}/members | 
-[**get_project_ota_status**](ProjectApi.md#get_project_ota_status) | **GET** /v1/projects/{projectUID}/ota/status | 
 [**get_project_products**](ProjectApi.md#get_project_products) | **GET** /v1/projects/{projectUID}/products | 
 [**get_projects**](ProjectApi.md#get_projects) | **GET** /v1/projects | 
 [**put_device_fleets**](ProjectApi.md#put_device_fleets) | **PUT** /v1/projects/{projectUID}/devices/{deviceUID}/fleets | 
@@ -31,7 +35,6 @@ Method | HTTP request | Description
 [**put_project_environment_variables**](ProjectApi.md#put_project_environment_variables) | **PUT** /v1/projects/{projectUID}/environment_variables | 
 [**set_global_transformation**](ProjectApi.md#set_global_transformation) | **POST** /v1/projects/{projectUID}/global-transformation | 
 [**update_fleet**](ProjectApi.md#update_fleet) | **PUT** /v1/projects/{projectUID}/fleets/{fleetUID} | 
-[**update_project_firmware**](ProjectApi.md#update_project_firmware) | **POST** /v1/projects/{projectUID}/ota/update | 
 
 
 # **clone_project**
@@ -762,6 +765,107 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **dfu_action**
+> dfu_action(project_uid, firmware_type, action, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku, dfu_action_request=dfu_action_request)
+
+
+
+Update/cancel host or notecard firmware updates
+
+### Example
+
+* Api Key Authentication (api_key):
+
+```python
+import notehub_py
+from notehub_py.models.dfu_action_request import DfuActionRequest
+from notehub_py.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.notefile.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = notehub_py.Configuration(
+    host = "https://api.notefile.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with notehub_py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = notehub_py.ProjectApi(api_client)
+    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
+    firmware_type = 'firmware_type_example' # str | 
+    action = 'action_example' # str | 
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
+    tag = ['tag_example'] # List[str] | Tag filter (optional)
+    serial_number = ['serial_number_example'] # List[str] | Serial number filter (optional)
+    fleet_uid = 'fleet_uid_example' # str |  (optional)
+    notecard_firmware = ['notecard_firmware_example'] # List[str] | Firmware version filter (optional)
+    location = ['location_example'] # List[str] | Location filter (optional)
+    host_firmware = ['host_firmware_example'] # List[str] | Host firmware filter (optional)
+    product_uid = ['product_uid_example'] # List[str] |  (optional)
+    sku = ['sku_example'] # List[str] | SKU filter (optional)
+    dfu_action_request = notehub_py.DfuActionRequest() # DfuActionRequest | Which firmware in the case of an update action (optional)
+
+    try:
+        api_instance.dfu_action(project_uid, firmware_type, action, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku, dfu_action_request=dfu_action_request)
+    except Exception as e:
+        print("Exception when calling ProjectApi->dfu_action: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uid** | **str**|  | 
+ **firmware_type** | **str**|  | 
+ **action** | **str**|  | 
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
+ **tag** | [**List[str]**](str.md)| Tag filter | [optional] 
+ **serial_number** | [**List[str]**](str.md)| Serial number filter | [optional] 
+ **fleet_uid** | **str**|  | [optional] 
+ **notecard_firmware** | [**List[str]**](str.md)| Firmware version filter | [optional] 
+ **location** | [**List[str]**](str.md)| Location filter | [optional] 
+ **host_firmware** | [**List[str]**](str.md)| Host firmware filter | [optional] 
+ **product_uid** | [**List[str]**](str.md)|  | [optional] 
+ **sku** | [**List[str]**](str.md)| SKU filter | [optional] 
+ **dfu_action_request** | [**DfuActionRequest**](DfuActionRequest.md)| Which firmware in the case of an update action | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | The response body in case of an API error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **disable_global_transformation**
 > disable_global_transformation(project_uid)
 
@@ -914,6 +1018,172 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_device_dfu_history**
+> DeviceDfuHistory get_device_dfu_history(project_uid, device_uid, firmware_type)
+
+
+
+Get device DFU history for host or Notecard firmware
+
+### Example
+
+* Api Key Authentication (api_key):
+
+```python
+import notehub_py
+from notehub_py.models.device_dfu_history import DeviceDfuHistory
+from notehub_py.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.notefile.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = notehub_py.Configuration(
+    host = "https://api.notefile.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with notehub_py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = notehub_py.ProjectApi(api_client)
+    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
+    device_uid = 'dev:000000000000000' # str | 
+    firmware_type = 'firmware_type_example' # str | 
+
+    try:
+        api_response = api_instance.get_device_dfu_history(project_uid, device_uid, firmware_type)
+        print("The response of ProjectApi->get_device_dfu_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProjectApi->get_device_dfu_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uid** | **str**|  | 
+ **device_uid** | **str**|  | 
+ **firmware_type** | **str**|  | 
+
+### Return type
+
+[**DeviceDfuHistory**](DeviceDfuHistory.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | The response body in case of an API error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_device_dfu_status**
+> DeviceDfuStatus get_device_dfu_status(project_uid, device_uid, firmware_type)
+
+
+
+Get device DFU history for host or Notecard firmware
+
+### Example
+
+* Api Key Authentication (api_key):
+
+```python
+import notehub_py
+from notehub_py.models.device_dfu_status import DeviceDfuStatus
+from notehub_py.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.notefile.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = notehub_py.Configuration(
+    host = "https://api.notefile.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with notehub_py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = notehub_py.ProjectApi(api_client)
+    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
+    device_uid = 'dev:000000000000000' # str | 
+    firmware_type = 'firmware_type_example' # str | 
+
+    try:
+        api_response = api_instance.get_device_dfu_status(project_uid, device_uid, firmware_type)
+        print("The response of ProjectApi->get_device_dfu_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProjectApi->get_device_dfu_status: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uid** | **str**|  | 
+ **device_uid** | **str**|  | 
+ **firmware_type** | **str**|  | 
+
+### Return type
+
+[**DeviceDfuStatus**](DeviceDfuStatus.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | The response body in case of an API error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_device_fleets**
 > GetProjectFleets200Response get_device_fleets(project_uid, device_uid)
 
@@ -991,6 +1261,220 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The response body from a fleets endpoint. |  -  |
+**0** | The response body in case of an API error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_devices_dfu_history**
+> DeviceDfuHistoryPage get_devices_dfu_history(project_uid, firmware_type, page_size=page_size, page_num=page_num, sort_by=sort_by, sort_order=sort_order, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
+
+
+
+Get host or Notecard DFU history for all devices that match the filter criteria
+
+### Example
+
+* Api Key Authentication (api_key):
+
+```python
+import notehub_py
+from notehub_py.models.device_dfu_history_page import DeviceDfuHistoryPage
+from notehub_py.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.notefile.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = notehub_py.Configuration(
+    host = "https://api.notefile.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with notehub_py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = notehub_py.ProjectApi(api_client)
+    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
+    firmware_type = 'firmware_type_example' # str | 
+    page_size = 50 # int |  (optional) (default to 50)
+    page_num = 1 # int |  (optional) (default to 1)
+    sort_by = 'captured' # str |  (optional) (default to 'captured')
+    sort_order = 'asc' # str |  (optional) (default to 'asc')
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
+    tag = ['tag_example'] # List[str] | Tag filter (optional)
+    serial_number = ['serial_number_example'] # List[str] | Serial number filter (optional)
+    fleet_uid = 'fleet_uid_example' # str |  (optional)
+    notecard_firmware = ['notecard_firmware_example'] # List[str] | Firmware version filter (optional)
+    location = ['location_example'] # List[str] | Location filter (optional)
+    host_firmware = ['host_firmware_example'] # List[str] | Host firmware filter (optional)
+    product_uid = ['product_uid_example'] # List[str] |  (optional)
+    sku = ['sku_example'] # List[str] | SKU filter (optional)
+
+    try:
+        api_response = api_instance.get_devices_dfu_history(project_uid, firmware_type, page_size=page_size, page_num=page_num, sort_by=sort_by, sort_order=sort_order, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
+        print("The response of ProjectApi->get_devices_dfu_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProjectApi->get_devices_dfu_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uid** | **str**|  | 
+ **firmware_type** | **str**|  | 
+ **page_size** | **int**|  | [optional] [default to 50]
+ **page_num** | **int**|  | [optional] [default to 1]
+ **sort_by** | **str**|  | [optional] [default to &#39;captured&#39;]
+ **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
+ **tag** | [**List[str]**](str.md)| Tag filter | [optional] 
+ **serial_number** | [**List[str]**](str.md)| Serial number filter | [optional] 
+ **fleet_uid** | **str**|  | [optional] 
+ **notecard_firmware** | [**List[str]**](str.md)| Firmware version filter | [optional] 
+ **location** | [**List[str]**](str.md)| Location filter | [optional] 
+ **host_firmware** | [**List[str]**](str.md)| Host firmware filter | [optional] 
+ **product_uid** | [**List[str]**](str.md)|  | [optional] 
+ **sku** | [**List[str]**](str.md)| SKU filter | [optional] 
+
+### Return type
+
+[**DeviceDfuHistoryPage**](DeviceDfuHistoryPage.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | The response body in case of an API error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_devices_dfu_status**
+> DeviceDfuStatusPage get_devices_dfu_status(project_uid, firmware_type, page_size=page_size, page_num=page_num, sort_by=sort_by, sort_order=sort_order, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
+
+
+
+Get host or Notecard DFU history for all devices that match the filter criteria
+
+### Example
+
+* Api Key Authentication (api_key):
+
+```python
+import notehub_py
+from notehub_py.models.device_dfu_status_page import DeviceDfuStatusPage
+from notehub_py.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.notefile.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = notehub_py.Configuration(
+    host = "https://api.notefile.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with notehub_py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = notehub_py.ProjectApi(api_client)
+    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
+    firmware_type = 'firmware_type_example' # str | 
+    page_size = 50 # int |  (optional) (default to 50)
+    page_num = 1 # int |  (optional) (default to 1)
+    sort_by = 'captured' # str |  (optional) (default to 'captured')
+    sort_order = 'asc' # str |  (optional) (default to 'asc')
+    device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
+    tag = ['tag_example'] # List[str] | Tag filter (optional)
+    serial_number = ['serial_number_example'] # List[str] | Serial number filter (optional)
+    fleet_uid = 'fleet_uid_example' # str |  (optional)
+    notecard_firmware = ['notecard_firmware_example'] # List[str] | Firmware version filter (optional)
+    location = ['location_example'] # List[str] | Location filter (optional)
+    host_firmware = ['host_firmware_example'] # List[str] | Host firmware filter (optional)
+    product_uid = ['product_uid_example'] # List[str] |  (optional)
+    sku = ['sku_example'] # List[str] | SKU filter (optional)
+
+    try:
+        api_response = api_instance.get_devices_dfu_status(project_uid, firmware_type, page_size=page_size, page_num=page_num, sort_by=sort_by, sort_order=sort_order, device_uid=device_uid, tag=tag, serial_number=serial_number, fleet_uid=fleet_uid, notecard_firmware=notecard_firmware, location=location, host_firmware=host_firmware, product_uid=product_uid, sku=sku)
+        print("The response of ProjectApi->get_devices_dfu_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProjectApi->get_devices_dfu_status: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uid** | **str**|  | 
+ **firmware_type** | **str**|  | 
+ **page_size** | **int**|  | [optional] [default to 50]
+ **page_num** | **int**|  | [optional] [default to 1]
+ **sort_by** | **str**|  | [optional] [default to &#39;captured&#39;]
+ **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
+ **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
+ **tag** | [**List[str]**](str.md)| Tag filter | [optional] 
+ **serial_number** | [**List[str]**](str.md)| Serial number filter | [optional] 
+ **fleet_uid** | **str**|  | [optional] 
+ **notecard_firmware** | [**List[str]**](str.md)| Firmware version filter | [optional] 
+ **location** | [**List[str]**](str.md)| Location filter | [optional] 
+ **host_firmware** | [**List[str]**](str.md)| Host firmware filter | [optional] 
+ **product_uid** | [**List[str]**](str.md)|  | [optional] 
+ **sku** | [**List[str]**](str.md)| SKU filter | [optional] 
+
+### Return type
+
+[**DeviceDfuStatusPage**](DeviceDfuStatusPage.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
 **0** | The response body in case of an API error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1564,95 +2048,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_project_ota_status**
-> List[OTAStatusList] get_project_ota_status(project_uid, device_uids=device_uids, fleet_uids=fleet_uids, device_tags=device_tags, page_size=page_size, page_num=page_num)
-
-
-
-Get Project OTA Status
-
-### Example
-
-* Api Key Authentication (api_key):
-
-```python
-import notehub_py
-from notehub_py.models.ota_status_list import OTAStatusList
-from notehub_py.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.notefile.net
-# See configuration.py for a list of all supported configuration parameters.
-configuration = notehub_py.Configuration(
-    host = "https://api.notefile.net"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with notehub_py.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = notehub_py.ProjectApi(api_client)
-    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    device_uids = ['device_uids_example'] # List[str] | An array of Device UIDs. (optional)
-    fleet_uids = ['fleet_uids_example'] # List[str] |  (optional)
-    device_tags = ['device_tags_example'] # List[str] |  (optional)
-    page_size = 50 # int |  (optional) (default to 50)
-    page_num = 1 # int |  (optional) (default to 1)
-
-    try:
-        api_response = api_instance.get_project_ota_status(project_uid, device_uids=device_uids, fleet_uids=fleet_uids, device_tags=device_tags, page_size=page_size, page_num=page_num)
-        print("The response of ProjectApi->get_project_ota_status:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ProjectApi->get_project_ota_status: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_uid** | **str**|  | 
- **device_uids** | [**List[str]**](str.md)| An array of Device UIDs. | [optional] 
- **fleet_uids** | [**List[str]**](str.md)|  | [optional] 
- **device_tags** | [**List[str]**](str.md)|  | [optional] 
- **page_size** | **int**|  | [optional] [default to 50]
- **page_num** | **int**|  | [optional] [default to 1]
-
-### Return type
-
-[**List[OTAStatusList]**](OTAStatusList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | The response body in case of an API error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_project_products**
 > GetProjectProducts200Response get_project_products(project_uid)
 
@@ -2213,88 +2608,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful operation |  -  |
-**0** | The response body in case of an API error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_project_firmware**
-> List[OTAUpdateStatus] update_project_firmware(project_uid, ota_update_request)
-
-
-
-Update Project Firmware
-
-### Example
-
-* Api Key Authentication (api_key):
-
-```python
-import notehub_py
-from notehub_py.models.ota_update_request import OTAUpdateRequest
-from notehub_py.models.ota_update_status import OTAUpdateStatus
-from notehub_py.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.notefile.net
-# See configuration.py for a list of all supported configuration parameters.
-configuration = notehub_py.Configuration(
-    host = "https://api.notefile.net"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration.api_key['api_key'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['api_key'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with notehub_py.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = notehub_py.ProjectApi(api_client)
-    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    ota_update_request = notehub_py.OTAUpdateRequest() # OTAUpdateRequest | Body or payload of firmware update
-
-    try:
-        api_response = api_instance.update_project_firmware(project_uid, ota_update_request)
-        print("The response of ProjectApi->update_project_firmware:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ProjectApi->update_project_firmware: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_uid** | **str**|  | 
- **ota_update_request** | [**OTAUpdateRequest**](OTAUpdateRequest.md)| Body or payload of firmware update | 
-
-### Return type
-
-[**List[OTAUpdateStatus]**](OTAUpdateStatus.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
 **0** | The response body in case of an API error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
