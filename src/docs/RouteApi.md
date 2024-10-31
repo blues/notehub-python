@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_route**
-> Route create_route(project_uid, route)
+> NotehubRoute create_route(project_uid, notehub_route)
 
 
 
@@ -25,7 +25,7 @@ Create Route within a Project
 
 ```python
 import notehub_py
-from notehub_py.models.route import Route
+from notehub_py.models.notehub_route import NotehubRoute
 from notehub_py.rest import ApiException
 from pprint import pprint
 
@@ -51,7 +51,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.RouteApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    route = {
+    notehub_route = {
   "label": "Route Label",
   "type":"http",
   "http": {
@@ -60,10 +60,10 @@ with notehub_py.ApiClient(configuration) as api_client:
     "url": "http://route.url"
   }
 }
- # Route | Route to be Created
+ # NotehubRoute | Route to be Created
 
     try:
-        api_response = api_instance.create_route(project_uid, route)
+        api_response = api_instance.create_route(project_uid, notehub_route)
         print("The response of RouteApi->create_route:\n")
         pprint(api_response)
     except Exception as e:
@@ -78,11 +78,11 @@ with notehub_py.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_uid** | **str**|  | 
- **route** | [**Route**](Route.md)| Route to be Created | 
+ **notehub_route** | [**NotehubRoute**](NotehubRoute.md)| Route to be Created | 
 
 ### Return type
 
-[**Route**](Route.md)
+[**NotehubRoute**](NotehubRoute.md)
 
 ### Authorization
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_route**
-> Route get_route(project_uid, route_uid)
+> NotehubRoute get_route(project_uid, route_uid)
 
 
 
@@ -195,7 +195,7 @@ Get single route within a project
 
 ```python
 import notehub_py
-from notehub_py.models.route import Route
+from notehub_py.models.notehub_route import NotehubRoute
 from notehub_py.rest import ApiException
 from pprint import pprint
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Route**](Route.md)
+[**NotehubRoute**](NotehubRoute.md)
 
 ### Authorization
 
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_route**
-> Route update_route(project_uid, route_uid, route)
+> NotehubRoute update_route(project_uid, route_uid, notehub_route)
 
 
 
@@ -454,7 +454,7 @@ Update route by UID
 
 ```python
 import notehub_py
-from notehub_py.models.route import Route
+from notehub_py.models.notehub_route import NotehubRoute
 from notehub_py.rest import ApiException
 from pprint import pprint
 
@@ -481,7 +481,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     api_instance = notehub_py.RouteApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
     route_uid = 'route:cbd20093cba58392c9f9bbdd0cdeb1a0' # str | 
-    route = {
+    notehub_route = {
   "http" {
     "filter": {
       "type": "include",
@@ -492,10 +492,10 @@ with notehub_py.ApiClient(configuration) as api_client:
     "url": "http://new-route.url",
   },
 }
- # Route | Route settings to be updated
+ # NotehubRoute | Route settings to be updated
 
     try:
-        api_response = api_instance.update_route(project_uid, route_uid, route)
+        api_response = api_instance.update_route(project_uid, route_uid, notehub_route)
         print("The response of RouteApi->update_route:\n")
         pprint(api_response)
     except Exception as e:
@@ -511,11 +511,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_uid** | **str**|  | 
  **route_uid** | **str**|  | 
- **route** | [**Route**](Route.md)| Route settings to be updated | 
+ **notehub_route** | [**NotehubRoute**](NotehubRoute.md)| Route settings to be updated | 
 
 ### Return type
 
-[**Route**](Route.md)
+[**NotehubRoute**](NotehubRoute.md)
 
 ### Authorization
 

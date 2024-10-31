@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_fleet_events**
-> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid=fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
 
 
 
@@ -50,7 +50,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = notehub_py.EventApi(api_client)
     project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
-    fleet_uid = ['fleet_uid_example'] # List[str] | Filter by Fleet UID (optional)
+    fleet_uid = 'fleet_uid_example' # str | 
     page_size = 50 # int |  (optional) (default to 50)
     page_num = 1 # int |  (optional) (default to 1)
     device_uid = ['device_uid_example'] # List[str] | A Device UID. (optional)
@@ -58,6 +58,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
+    date_type = 'captured' # str | Which date to filter on, either 'captured' or 'uploaded'.  This will apply to the startDate and endDate parameters (optional) (default to 'captured')
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
     format = 'json' # str | Response format (JSON or CSV) (optional) (default to 'json')
@@ -69,7 +70,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_fleet_events(project_uid, fleet_uid=fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+        api_response = api_instance.get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
         print("The response of EventApi->get_fleet_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -84,7 +85,7 @@ with notehub_py.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_uid** | **str**|  | 
- **fleet_uid** | [**List[str]**](str.md)| Filter by Fleet UID | [optional] 
+ **fleet_uid** | **str**|  | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_num** | **int**|  | [optional] [default to 1]
  **device_uid** | [**List[str]**](str.md)| A Device UID. | [optional] 
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
  **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
  **start_date** | **int**| Unix timestamp | [optional] 
  **end_date** | **int**| Unix timestamp | [optional] 
+ **date_type** | **str**| Which date to filter on, either &#39;captured&#39; or &#39;uploaded&#39;.  This will apply to the startDate and endDate parameters | [optional] [default to &#39;captured&#39;]
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
  **format** | **str**| Response format (JSON or CSV) | [optional] [default to &#39;json&#39;]
@@ -222,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_events**
-> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
 
 
 
@@ -267,6 +269,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     sort_order = 'asc' # str |  (optional) (default to 'asc')
     start_date = 1628631763 # int | Unix timestamp (optional)
     end_date = 1657894210 # int | Unix timestamp (optional)
+    date_type = 'captured' # str | Which date to filter on, either 'captured' or 'uploaded'.  This will apply to the startDate and endDate parameters (optional) (default to 'captured')
     system_files_only = True # bool |  (optional)
     files = '_health.qo, data.qo' # str |  (optional)
     format = 'json' # str | Response format (JSON or CSV) (optional) (default to 'json')
@@ -279,7 +282,7 @@ with notehub_py.ApiClient(configuration) as api_client:
     since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
         print("The response of EventApi->get_project_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -301,6 +304,7 @@ Name | Type | Description  | Notes
  **sort_order** | **str**|  | [optional] [default to &#39;asc&#39;]
  **start_date** | **int**| Unix timestamp | [optional] 
  **end_date** | **int**| Unix timestamp | [optional] 
+ **date_type** | **str**| Which date to filter on, either &#39;captured&#39; or &#39;uploaded&#39;.  This will apply to the startDate and endDate parameters | [optional] [default to &#39;captured&#39;]
  **system_files_only** | **bool**|  | [optional] 
  **files** | **str**|  | [optional] 
  **format** | **str**| Response format (JSON or CSV) | [optional] [default to &#39;json&#39;]
