@@ -37,7 +37,10 @@ class TestPostProvisionProjectDeviceRequest(unittest.TestCase):
         if include_optional:
             return PostProvisionProjectDeviceRequest(
                 product_uid = '',
-                device_sn = ''
+                device_sn = '',
+                fleet_uids = [
+                    ''
+                    ]
             )
         else:
             return PostProvisionProjectDeviceRequest(

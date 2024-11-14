@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **product_uid** | **str** | The ProductUID that the device should use. | 
 **device_sn** | **str** | The serial number to assign to the device. | [optional] 
+**fleet_uids** | **List[str]** | The fleetUIDs to provision the device to. | [optional] 
 
 ## Example
 
