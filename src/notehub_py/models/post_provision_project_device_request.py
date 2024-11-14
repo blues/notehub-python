@@ -29,7 +29,8 @@ class PostProvisionProjectDeviceRequest(BaseModel):
     """ # noqa: E501
     product_uid: StrictStr = Field(description="The ProductUID that the device should use.")
     device_sn: Optional[StrictStr] = Field(default=None, description="The serial number to assign to the device.")
-    __properties: ClassVar[List[str]] = ["product_uid", "device_sn"]
+    fleet_uids: Optional[List[StrictStr]] = Field(default=None, description="The fleetUIDs to provision the device to.")
+    __properties: ClassVar[List[str]] = ["product_uid", "device_sn", "fleet_uids"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +71,11 @@ class PostProvisionProjectDeviceRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if fleet_uids (nullable) is None
+        # and model_fields_set contains the field
+        if self.fleet_uids is None and "fleet_uids" in self.model_fields_set:
+            _dict['fleet_uids'] = None
+
         return _dict
 
     @classmethod
@@ -83,7 +89,8 @@ class PostProvisionProjectDeviceRequest(BaseModel):
 
         _obj = cls.model_validate({
             "product_uid": obj.get("product_uid"),
-            "device_sn": obj.get("device_sn")
+            "device_sn": obj.get("device_sn"),
+            "fleet_uids": obj.get("fleet_uids")
         })
         return _obj
 

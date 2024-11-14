@@ -783,6 +783,12 @@ paths:
                 device_sn:
                   type: string
                   description: The serial number to assign to the device.
+                fleet_uids:
+                  type: array
+                  items:
+                    type: string
+                  description: The fleetUIDs to provision the device to.
+                  nullable: true
               required:
                 - product_uid
       responses:
