@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_fleet_events**
-> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+> GetProjectEvents200Response get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields)
 
 
 
@@ -66,11 +66,9 @@ with notehub_py.ApiClient(configuration) as api_client:
     session_uid = ['session_uid_example'] # List[str] | Filter by Session UID (optional)
     event_uid = ['event_uid_example'] # List[str] | Filter by Event UID (optional)
     select_fields = 'select_fields_example' # str | Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output. (optional)
-    device_uids = ['device_uids_example'] # List[str] | Deprecated. (optional)
-    since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+        api_response = api_instance.get_fleet_events(project_uid, fleet_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields)
         print("The response of EventApi->get_fleet_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -101,8 +99,6 @@ Name | Type | Description  | Notes
  **session_uid** | [**List[str]**](str.md)| Filter by Session UID | [optional] 
  **event_uid** | [**List[str]**](str.md)| Filter by Event UID | [optional] 
  **select_fields** | **str**| Comma-separated list of fields to select from JSON payload (e.g., \&quot;field1,field2.subfield,field3\&quot;), this will reflect the columns in the CSV output. | [optional] 
- **device_uids** | [**List[str]**](str.md)| Deprecated. | [optional] 
- **since** | **str**| Deprecated. | [optional] 
 
 ### Return type
 
@@ -224,7 +220,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_events**
-> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+> GetProjectEvents200Response get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields)
 
 
 
@@ -278,11 +274,9 @@ with notehub_py.ApiClient(configuration) as api_client:
     session_uid = ['session_uid_example'] # List[str] | Filter by Session UID (optional)
     event_uid = ['event_uid_example'] # List[str] | Filter by Event UID (optional)
     select_fields = 'select_fields_example' # str | Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output. (optional)
-    device_uids = ['device_uids_example'] # List[str] | Deprecated. (optional)
-    since = 'since_example' # str | Deprecated. (optional)
 
     try:
-        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields, device_uids=device_uids, since=since)
+        api_response = api_instance.get_project_events(project_uid, page_size=page_size, page_num=page_num, device_uid=device_uid, sort_by=sort_by, sort_order=sort_order, start_date=start_date, end_date=end_date, date_type=date_type, system_files_only=system_files_only, files=files, format=format, serial_number=serial_number, fleet_uid=fleet_uid, session_uid=session_uid, event_uid=event_uid, select_fields=select_fields)
         print("The response of EventApi->get_project_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -313,8 +307,6 @@ Name | Type | Description  | Notes
  **session_uid** | [**List[str]**](str.md)| Filter by Session UID | [optional] 
  **event_uid** | [**List[str]**](str.md)| Filter by Event UID | [optional] 
  **select_fields** | **str**| Comma-separated list of fields to select from JSON payload (e.g., \&quot;field1,field2.subfield,field3\&quot;), this will reflect the columns in the CSV output. | [optional] 
- **device_uids** | [**List[str]**](str.md)| Deprecated. | [optional] 
- **since** | **str**| Deprecated. | [optional] 
 
 ### Return type
 

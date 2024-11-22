@@ -200,7 +200,7 @@ The [`lib_template`](lib_template/) folder holds the Python generator template f
 
 The [`.github/`](.github/) folder holds a set of GitHub Actions workflows that automate common tasks like [creating PRs](.github/workflows/create-pr.yml) out of new branches and publishing new releases to PyPi.
 
-The [`openapi.yaml`](openapi.yaml) file is a copy of the one in the Notehub repo (a private Blues repository). Anytime a new version of [Notehub.io][notehub] is deployed and the `openapi.yaml` file there is updated, a fresh copy of that file is added to this project in a new branch via a GitHub Actions workflow.
+The [`openapi.yaml`](openapi.yaml) file is a copy of the one in the Notehub repo (a private Blues repository). Any time a new version of [Notehub.io][notehub] is deployed and the `openapi.yaml` file there is updated, a fresh copy of that file is added to this project in a new branch via a GitHub Actions workflow.
 
 The [`config.json`](config.json) file is the one that will require changes before a new version of the package is published to PyPi. The [next section](#updating-the-auto-generated-notehub-py-package) will elaborate further.
 
@@ -223,10 +223,18 @@ $ git clone git@github.com:blues/notehub-py.git
 4. At the root of the project, run the following script command from your terminal:
 
 ```shell
+$ python3 scripts.py remove_deprecated_parameters
+```
+
+This command will make a copy of the `openapi.yaml` file named `openapi_filtered.yaml` which has removed any query parameters marked as `deprecated` from the `openapi.yaml` file. Removing these now deprecated params ensures the generated SDK docs and sample code is clear and up to date, and no longer has potentially confusing artifacts to trip up users.
+
+5. Still at the root of the project, run the following script command from your terminal:
+
+```shell
 $ python3 scripts.py generate_package
 ```
 
-This command will kick off the OpenAPI Generator tool to generate a new copy of the library inside of the `src/` folder, which can then be merged to the `main` repo branch and published to PyPi.
+This command will kick off the OpenAPI Generator tool to generate a new copy of the library inside of the `src/` folder (using the newly updated `openapi_filtered.yaml` file), which can then be merged to the `main` repo branch and published to PyPi.
 
 > **NOTE:** If you'd like more information about what exactly the `generate_package` script is doing with its OpenAPI generator CLI commands, you can see the documentation for them [here](https://openapi-generator.tech/docs/usage/).
 
@@ -262,22 +270,27 @@ Run the following commands from the `notehub-py` root directory in this order to
 ### Steps to Publish an Updated notehub_py Package to PyPi
 
 1. Update the `"packageVersion"` in the `config.json` file. Follow [semantic versioning](https://semver.org/) for this.
+2. Create a new copy of the `openapi_filtered.yaml` file that removes all deprecated query params from the original `openapi.yaml` file.
 
-2. Generate the new version of the package.
+```bash
+python3 scripts.py remove_deprecated_parameters
+```
+
+3. Generate the new version of the package.
 
 ```bash
 python3 scripts.py generate_package
 ```
 
-3. Rebuild the distribution packages for the PyPi package repository.
+4. Rebuild the distribution packages for the PyPi package repository.
 
 ```bash
 python3 scripts.py build_distro_package
 ```
 
-4. Commit and push the changes to a new branch in GitHub and open a new pull request when the branch is ready for review. See the [contribution documentation](CONTRIBUTING.md) for further details around a good PR and commit messages.
-5. Get the PR approved and merged to `main`.
-6. Create a new release with a tag following the [semantic versioning](https://semver.org/) style of [vX.X.X], click the "Generate release notes" button, and publish the release. For example: a new release with a tag named v1.0.2.
+5. Commit and push the changes to a new branch in GitHub and open a new pull request when the branch is ready for review. See the [contribution documentation](CONTRIBUTING.md) for further details around a good PR and commit messages.
+6. Get the PR approved and merged to `main`.
+7. Create a new release with a tag following the [semantic versioning](https://semver.org/) style of [vX.X.X], click the "Generate release notes" button, and publish the release. For example: a new release with a tag named v1.0.2.
 
 ## Contributing
 
