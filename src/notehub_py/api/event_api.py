@@ -62,8 +62,6 @@ class EventApi:
         session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
         event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
         select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
-        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
-        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -115,10 +113,6 @@ class EventApi:
         :type event_uid: List[str]
         :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
         :type select_fields: str
-        :param device_uids: Deprecated.
-        :type device_uids: List[str]
-        :param since: Deprecated.
-        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,8 +153,6 @@ class EventApi:
             session_uid=session_uid,
             event_uid=event_uid,
             select_fields=select_fields,
-            device_uids=device_uids,
-            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -201,8 +193,6 @@ class EventApi:
         session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
         event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
         select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
-        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
-        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -254,10 +244,6 @@ class EventApi:
         :type event_uid: List[str]
         :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
         :type select_fields: str
-        :param device_uids: Deprecated.
-        :type device_uids: List[str]
-        :param since: Deprecated.
-        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -298,8 +284,6 @@ class EventApi:
             session_uid=session_uid,
             event_uid=event_uid,
             select_fields=select_fields,
-            device_uids=device_uids,
-            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -340,8 +324,6 @@ class EventApi:
         session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
         event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
         select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
-        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
-        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -393,10 +375,6 @@ class EventApi:
         :type event_uid: List[str]
         :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
         :type select_fields: str
-        :param device_uids: Deprecated.
-        :type device_uids: List[str]
-        :param since: Deprecated.
-        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -437,8 +415,6 @@ class EventApi:
             session_uid=session_uid,
             event_uid=event_uid,
             select_fields=select_fields,
-            device_uids=device_uids,
-            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -474,8 +450,6 @@ class EventApi:
         session_uid,
         event_uid,
         select_fields,
-        device_uids,
-        since,
         _request_auth,
         _content_type,
         _headers,
@@ -489,7 +463,6 @@ class EventApi:
             'serialNumber': 'multi',
             'sessionUID': 'multi',
             'eventUID': 'multi',
-            'deviceUIDs': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -564,14 +537,6 @@ class EventApi:
         if select_fields is not None:
             
             _query_params.append(('selectFields', select_fields))
-            
-        if device_uids is not None:
-            
-            _query_params.append(('deviceUIDs', device_uids))
-            
-        if since is not None:
-            
-            _query_params.append(('since', since))
             
         # process the header parameters
         # process the form parameters
@@ -1040,8 +1005,6 @@ class EventApi:
         session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
         event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
         select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
-        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
-        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1093,10 +1056,6 @@ class EventApi:
         :type event_uid: List[str]
         :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
         :type select_fields: str
-        :param device_uids: Deprecated.
-        :type device_uids: List[str]
-        :param since: Deprecated.
-        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1137,8 +1096,6 @@ class EventApi:
             session_uid=session_uid,
             event_uid=event_uid,
             select_fields=select_fields,
-            device_uids=device_uids,
-            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1179,8 +1136,6 @@ class EventApi:
         session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
         event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
         select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
-        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
-        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1232,10 +1187,6 @@ class EventApi:
         :type event_uid: List[str]
         :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
         :type select_fields: str
-        :param device_uids: Deprecated.
-        :type device_uids: List[str]
-        :param since: Deprecated.
-        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1276,8 +1227,6 @@ class EventApi:
             session_uid=session_uid,
             event_uid=event_uid,
             select_fields=select_fields,
-            device_uids=device_uids,
-            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1318,8 +1267,6 @@ class EventApi:
         session_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Session UID")] = None,
         event_uid: Annotated[Optional[List[StrictStr]], Field(description="Filter by Event UID")] = None,
         select_fields: Annotated[Optional[StrictStr], Field(description="Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.")] = None,
-        device_uids: Annotated[Optional[List[StrictStr]], Field(description="Deprecated.")] = None,
-        since: Annotated[Optional[StrictStr], Field(description="Deprecated.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1371,10 +1318,6 @@ class EventApi:
         :type event_uid: List[str]
         :param select_fields: Comma-separated list of fields to select from JSON payload (e.g., \"field1,field2.subfield,field3\"), this will reflect the columns in the CSV output.
         :type select_fields: str
-        :param device_uids: Deprecated.
-        :type device_uids: List[str]
-        :param since: Deprecated.
-        :type since: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1415,8 +1358,6 @@ class EventApi:
             session_uid=session_uid,
             event_uid=event_uid,
             select_fields=select_fields,
-            device_uids=device_uids,
-            since=since,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1452,8 +1393,6 @@ class EventApi:
         session_uid,
         event_uid,
         select_fields,
-        device_uids,
-        since,
         _request_auth,
         _content_type,
         _headers,
@@ -1468,7 +1407,6 @@ class EventApi:
             'fleetUID': 'multi',
             'sessionUID': 'multi',
             'eventUID': 'multi',
-            'deviceUIDs': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1545,14 +1483,6 @@ class EventApi:
         if select_fields is not None:
             
             _query_params.append(('selectFields', select_fields))
-            
-        if device_uids is not None:
-            
-            _query_params.append(('deviceUIDs', device_uids))
-            
-        if since is not None:
-            
-            _query_params.append(('since', since))
             
         # process the header parameters
         # process the form parameters
