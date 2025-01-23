@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**get_devices_dfu_history**](ProjectApi.md#get_devices_dfu_history) | **GET** /v1/projects/{projectUID}/dfu/{firmwareType}/history | 
 [**get_devices_dfu_status**](ProjectApi.md#get_devices_dfu_status) | **GET** /v1/projects/{projectUID}/dfu/{firmwareType}/status | 
 [**get_firmware_info**](ProjectApi.md#get_firmware_info) | **GET** /v1/projects/{projectUID}/firmware | 
+[**get_fleet**](ProjectApi.md#get_fleet) | **GET** /v1/projects/{projectUID}/fleets/{fleetUID} | 
 [**get_fleet_environment_variables**](ProjectApi.md#get_fleet_environment_variables) | **GET** /v1/projects/{projectUID}/fleets/{fleetUID}/environment_variables | 
 [**get_project**](ProjectApi.md#get_project) | **GET** /v1/projects/{projectUID} | 
 [**get_project_by_product**](ProjectApi.md#get_project_by_product) | **GET** /v1/products/{productUID}/project | 
@@ -1569,6 +1570,86 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **0** | The response body in case of an API error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_fleet**
+> Fleet get_fleet(project_uid, fleet_uid)
+
+
+
+Get Fleet
+
+### Example
+
+* Api Key Authentication (api_key):
+
+```python
+import notehub_py
+from notehub_py.models.fleet import Fleet
+from notehub_py.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.notefile.net
+# See configuration.py for a list of all supported configuration parameters.
+configuration = notehub_py.Configuration(
+    host = "https://api.notefile.net"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration.api_key['api_key'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['api_key'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with notehub_py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = notehub_py.ProjectApi(api_client)
+    project_uid = 'app:2606f411-dea6-44a0-9743-1130f57d77d8' # str | 
+    fleet_uid = 'fleet_uid_example' # str | 
+
+    try:
+        api_response = api_instance.get_fleet(project_uid, fleet_uid)
+        print("The response of ProjectApi->get_fleet:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProjectApi->get_fleet: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uid** | **str**|  | 
+ **fleet_uid** | **str**|  | 
+
+### Return type
+
+[**Fleet**](Fleet.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

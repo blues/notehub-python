@@ -38,7 +38,8 @@ class TestFleet(unittest.TestCase):
             return Fleet(
                 uid = '',
                 label = '',
-                created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                smart_rule = ''
             )
         else:
             return Fleet(

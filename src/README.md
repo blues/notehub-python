@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *ProjectApi* | [**get_devices_dfu_history**](docs/ProjectApi.md#get_devices_dfu_history) | **GET** /v1/projects/{projectUID}/dfu/{firmwareType}/history | 
 *ProjectApi* | [**get_devices_dfu_status**](docs/ProjectApi.md#get_devices_dfu_status) | **GET** /v1/projects/{projectUID}/dfu/{firmwareType}/status | 
 *ProjectApi* | [**get_firmware_info**](docs/ProjectApi.md#get_firmware_info) | **GET** /v1/projects/{projectUID}/firmware | 
+*ProjectApi* | [**get_fleet**](docs/ProjectApi.md#get_fleet) | **GET** /v1/projects/{projectUID}/fleets/{fleetUID} | 
 *ProjectApi* | [**get_fleet_environment_variables**](docs/ProjectApi.md#get_fleet_environment_variables) | **GET** /v1/projects/{projectUID}/fleets/{fleetUID}/environment_variables | 
 *ProjectApi* | [**get_project**](docs/ProjectApi.md#get_project) | **GET** /v1/projects/{projectUID} | 
 *ProjectApi* | [**get_project_by_product**](docs/ProjectApi.md#get_project_by_product) | **GET** /v1/products/{productUID}/project | 

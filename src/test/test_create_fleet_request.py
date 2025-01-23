@@ -36,7 +36,8 @@ class TestCreateFleetRequest(unittest.TestCase):
         model = CreateFleetRequest()
         if include_optional:
             return CreateFleetRequest(
-                label = ''
+                label = '',
+                smart_rule = ''
             )
         else:
             return CreateFleetRequest(

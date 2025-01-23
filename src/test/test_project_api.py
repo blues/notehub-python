@@ -135,6 +135,12 @@ class TestProjectApi(unittest.TestCase):
         """
         pass
 
+    def test_get_fleet(self) -> None:
+        """Test case for get_fleet
+
+        """
+        pass
+
     def test_get_fleet_environment_variables(self) -> None:
         """Test case for get_fleet_environment_variables
 
