@@ -42,7 +42,8 @@ class TestUpdateFleetRequest(unittest.TestCase):
                     ],
                 remove_devices = [
                     ''
-                    ]
+                    ],
+                smart_rule = ''
             )
         else:
             return UpdateFleetRequest(

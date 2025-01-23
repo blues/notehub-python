@@ -30,7 +30,8 @@ class UpdateFleetRequest(BaseModel):
     label: Optional[StrictStr] = Field(default=None, description="The label for the Fleet.")
     add_devices: Optional[List[StrictStr]] = Field(default=None, description="List of DeviceUIDs to add to fleet", alias="addDevices")
     remove_devices: Optional[List[StrictStr]] = Field(default=None, description="List of DeviceUIDs to remove from fleet", alias="removeDevices")
-    __properties: ClassVar[List[str]] = ["label", "addDevices", "removeDevices"]
+    smart_rule: Optional[StrictStr] = Field(default=None, description="JSONata expression that will be evaluated to determine device membership into this fleet, if the expression evaluates to a 1, the device will be included, if it evaluates to -1 it will be removed, and if it evaluates to 0 or errors it will be left unchanged.")
+    __properties: ClassVar[List[str]] = ["label", "addDevices", "removeDevices", "smart_rule"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,7 +86,8 @@ class UpdateFleetRequest(BaseModel):
         _obj = cls.model_validate({
             "label": obj.get("label"),
             "addDevices": obj.get("addDevices"),
-            "removeDevices": obj.get("removeDevices")
+            "removeDevices": obj.get("removeDevices"),
+            "smart_rule": obj.get("smart_rule")
         })
         return _obj
 

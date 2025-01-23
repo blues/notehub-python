@@ -27,8 +27,9 @@ class CreateFleetRequest(BaseModel):
     """
     CreateFleetRequest
     """ # noqa: E501
-    label: Optional[StrictStr] = Field(default=None, description="The label for the Fleet.")
-    __properties: ClassVar[List[str]] = ["label"]
+    label: Optional[StrictStr] = Field(default=None, description="The label, or name,  for the Fleet.")
+    smart_rule: Optional[StrictStr] = Field(default=None, description="JSONata expression that will be evaluated to determine device membership into this fleet, if the expression evaluates to a 1, the device will be included, if it evaluates to -1 it will be removed, and if it evaluates to 0 or errors it will be left unchanged.")
+    __properties: ClassVar[List[str]] = ["label", "smart_rule"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +82,8 @@ class CreateFleetRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "label": obj.get("label")
+            "label": obj.get("label"),
+            "smart_rule": obj.get("smart_rule")
         })
         return _obj
 

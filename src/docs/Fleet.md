@@ -5,9 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uid** | **str** |  | 
-**label** | **str** |  | 
-**created** | **datetime** |  | 
+**uid** | **str** | Fleet UID | 
+**label** | **str** | Fleet label | 
+**created** | **datetime** | RFC3339 timestamp in UTC | 
+**smart_rule** | **str** | JSONata expression that will be evaluated to determine device membership into this fleet, if the expression evaluates to a 1, the device will be included, if it evaluates to -1 it will be removed, and if it evaluates to 0 or errors it will be left unchanged. | [optional] 
 
 ## Example
 
